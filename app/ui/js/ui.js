@@ -1,7 +1,7 @@
 define(function(require){
-    var UIMgr = require("./main");
+    var rootApp = require("./app");
+
     return function(){
-        var ui = new UIMgr();
-        ui.init();
+        rootApp.start();
     }
 });

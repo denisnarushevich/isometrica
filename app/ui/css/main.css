@@ -427,13 +427,7 @@ th {
 .pixelated,
 .ui-window > .row > .cell > .buttons > .button .icon,
 .game-ui .world-view .btns .slot .btn,
-.game-ui .building-list-view .img-space .space .img,
-.game-ui .building-cats .cat-image .cat-img,
-.game-ui .building-view > .row > .cell > .body .eye > img,
-.game-ui .building-view > .row > .cell > .body .eye > .img,
-.game-ui .top-bar .section > .icon-val .icon,
-.ui-list-window > .row > .cell > .buttons > .button .icon,
-.game-ui .building-cats > .row > .cell > .buttons > .button .icon {
+.ui-list-window > .row > .cell > .buttons > .button .icon {
   image-rendering: optimizeSpeed;
   /* Legal fallback */
   image-rendering: -moz-crisp-edges;
@@ -453,17 +447,13 @@ th {
 }
 .ui-block,
 .ui-window > .row > .cell > .body .tab-content,
-.game-ui .top-bar,
-.ui-list-window > .row > .cell > .body .tab-content,
-.game-ui .building-cats > .row > .cell > .body .tab-content {
+.ui-list-window > .row > .cell > .body .tab-content {
   background-color: #4ebaba;
   border: 1px solid #73c8c8;
   border-bottom-color: #3c9999;
   border-right-color: #3c9999;
 }
-.ui-block-inset,
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-container,
-.game-ui .city-view .info-tab-content .bird-eye-container {
+.ui-block-inset {
   background-color: #4ebaba;
   border: 1px solid #3c9999;
   border-bottom-color: #73c8c8;
@@ -520,8 +510,7 @@ th {
 }
 .ui-tab,
 .ui-window > .row > .cell > .tabs-section .tabs .tab,
-.ui-list-window > .row > .cell > .tabs-section .tabs .tab,
-.game-ui .building-cats > .row > .cell > .tabs-section .tabs .tab {
+.ui-list-window > .row > .cell > .tabs-section .tabs .tab {
   background-color: #4ebaba;
   border: 1px solid #73c8c8;
   border-bottom-color: #3c9999;
@@ -529,8 +518,7 @@ th {
 }
 .ui-tab.active,
 .ui-window > .row > .cell > .tabs-section .tabs .tab.active,
-.ui-list-window > .row > .cell > .tabs-section .tabs .tab.active,
-.game-ui .building-cats > .row > .cell > .tabs-section .tabs .tab.active {
+.ui-list-window > .row > .cell > .tabs-section .tabs .tab.active {
   background-color: #2e9c9c;
   border: 1px solid #60d0d0;
   border-bottom-color: #174d4d;
@@ -539,20 +527,12 @@ th {
 .middle-position:before,
 .ui-window > .row > .cell > .tabs-section .tabs .tab:before,
 .ui-window > .row > .cell > .buttons > .button:before,
+.game-ui #splash:before,
 .game-ui .world-view .hint-pos:before,
 .game-ui .world-view .btns .slot:before,
-.game-ui .building-list-view .name:before,
-.game-ui .building-cats .cat-image:before,
-.game-ui .building-cats .cat-name:before,
-.game-ui .top-bar .city-name:before,
-.game-ui .top-bar .section > .icon-val:before,
-.game-ui .top-bar .section > .icon-val .text:before,
-.game-ui #splash:before,
 .game-ui .prompt-view .body:before,
 .ui-list-window > .row > .cell > .tabs-section .tabs .tab:before,
-.ui-list-window > .row > .cell > .buttons > .button:before,
-.game-ui .building-cats > .row > .cell > .tabs-section .tabs .tab:before,
-.game-ui .building-cats > .row > .cell > .buttons > .button:before {
+.ui-list-window > .row > .cell > .buttons > .button:before {
   content: "";
   display: inline-block;
   height: 100%;
@@ -567,43 +547,36 @@ th {
   border-bottom: 1px solid #73c8c8;
 }
 .ui-window,
-.ui-list-window,
-.game-ui .building-cats {
+.ui-list-window {
   display: table;
   height: 100%;
   width: 100%;
 }
 .ui-window > .row,
-.ui-list-window > .row,
-.game-ui .building-cats > .row {
+.ui-list-window > .row {
   display: table-row;
 }
 .ui-window > .row.body,
-.ui-list-window > .row.body,
-.game-ui .building-cats > .row.body {
+.ui-list-window > .row.body {
   height: 100%;
 }
 .ui-window > .row > .cell,
-.ui-list-window > .row > .cell,
-.game-ui .building-cats > .row > .cell {
+.ui-list-window > .row > .cell {
   display: table-cell;
   position: relative;
 }
 .ui-window > .row > .cell.flex,
-.ui-list-window > .row > .cell.flex,
-.game-ui .building-cats > .row > .cell.flex {
+.ui-list-window > .row > .cell.flex {
   height: 100%;
 }
 .ui-window > .row > .cell > .tabs-section,
-.ui-list-window > .row > .cell > .tabs-section,
-.game-ui .building-cats > .row > .cell > .tabs-section {
+.ui-list-window > .row > .cell > .tabs-section {
   height: 48px;
   overflow-x: hidden;
   position: relative;
 }
 .ui-window > .row > .cell > .tabs-section .tabs,
-.ui-list-window > .row > .cell > .tabs-section .tabs,
-.game-ui .building-cats > .row > .cell > .tabs-section .tabs {
+.ui-list-window > .row > .cell > .tabs-section .tabs {
   position: absolute;
   top: 10%;
   bottom: 10%;
@@ -613,8 +586,7 @@ th {
   font-size: 0;
 }
 .ui-window > .row > .cell > .tabs-section .tabs .tab,
-.ui-list-window > .row > .cell > .tabs-section .tabs .tab,
-.game-ui .building-cats > .row > .cell > .tabs-section .tabs .tab {
+.ui-list-window > .row > .cell > .tabs-section .tabs .tab {
   display: inline-block;
   height: 100%;
   margin: 0 4px;
@@ -624,8 +596,7 @@ th {
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
 }
 .ui-window > .row > .cell > .body,
-.ui-list-window > .row > .cell > .body,
-.game-ui .building-cats > .row > .cell > .body {
+.ui-list-window > .row > .cell > .body {
   position: absolute;
   top: 0;
   left: 0;
@@ -634,29 +605,24 @@ th {
   overflow: hidden;
 }
 .ui-window > .row > .cell > .body .tab-content,
-.ui-list-window > .row > .cell > .body .tab-content,
-.game-ui .building-cats > .row > .cell > .body .tab-content {
+.ui-list-window > .row > .cell > .body .tab-content {
   overflow-y: scroll;
 }
 .ui-window > .row > .cell > .body .tab-content:not(:first-child):not(:last-child),
-.ui-list-window > .row > .cell > .body .tab-content:not(:first-child):not(:last-child),
-.game-ui .building-cats > .row > .cell > .body .tab-content:not(:first-child):not(:last-child) {
+.ui-list-window > .row > .cell > .body .tab-content:not(:first-child):not(:last-child) {
   border-left-width: 0;
   border-right-width: 0;
 }
 .ui-window > .row > .cell > .body .tab-content:first-child,
-.ui-list-window > .row > .cell > .body .tab-content:first-child,
-.game-ui .building-cats > .row > .cell > .body .tab-content:first-child {
+.ui-list-window > .row > .cell > .body .tab-content:first-child {
   border-right-width: 0;
 }
 .ui-window > .row > .cell > .body .tab-content:last-child,
-.ui-list-window > .row > .cell > .body .tab-content:last-child,
-.game-ui .building-cats > .row > .cell > .body .tab-content:last-child {
+.ui-list-window > .row > .cell > .body .tab-content:last-child {
   border-left-width: 0;
 }
 .ui-window > .row > .cell > .body .tab-content,
-.ui-list-window > .row > .cell > .body .tab-content,
-.game-ui .building-cats > .row > .cell > .body .tab-content {
+.ui-list-window > .row > .cell > .body .tab-content {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -666,26 +632,22 @@ th {
   opacity: 0;
 }
 .ui-window > .row > .cell > .body .tab-content.active ~ .tab-content,
-.ui-list-window > .row > .cell > .body .tab-content.active ~ .tab-content,
-.game-ui .building-cats > .row > .cell > .body .tab-content.active ~ .tab-content {
+.ui-list-window > .row > .cell > .body .tab-content.active ~ .tab-content {
   left: 100%;
 }
 .ui-window > .row > .cell > .body .tab-content.active,
-.ui-list-window > .row > .cell > .body .tab-content.active,
-.game-ui .building-cats > .row > .cell > .body .tab-content.active {
+.ui-list-window > .row > .cell > .body .tab-content.active {
   opacity: 1;
   left: 0;
   transition: left 0.33s, opacity 0s 0s;
 }
 .ui-window > .row > .cell > .buttons,
-.ui-list-window > .row > .cell > .buttons,
-.game-ui .building-cats > .row > .cell > .buttons {
+.ui-list-window > .row > .cell > .buttons {
   height: 64px;
   overflow: hidden;
 }
 .ui-window > .row > .cell > .buttons > .button,
-.ui-list-window > .row > .cell > .buttons > .button,
-.game-ui .building-cats > .row > .cell > .buttons > .button {
+.ui-list-window > .row > .cell > .buttons > .button {
   float: left;
   width: 20%;
   height: 100%;
@@ -696,66 +658,54 @@ th {
   display: block;
 }
 .ui-window > .row > .cell > .buttons > .button .icon,
-.ui-list-window > .row > .cell > .buttons > .button .icon,
-.game-ui .building-cats > .row > .cell > .buttons > .button .icon {
+.ui-list-window > .row > .cell > .buttons > .button .icon {
   vertical-align: middle;
   display: inline-block;
   height: 50%;
   max-width: 25%;
 }
 .ui-window > .row > .cell > .buttons > .button .text,
-.ui-list-window > .row > .cell > .buttons > .button .text,
-.game-ui .building-cats > .row > .cell > .buttons > .button .text {
+.ui-list-window > .row > .cell > .buttons > .button .text {
   display: inline-block;
   vertical-align: middle;
   font-size: 10pt;
 }
 .ui-window > .row > .cell > .buttons.count-5 .button,
-.ui-list-window > .row > .cell > .buttons.count-5 .button,
-.game-ui .building-cats > .row > .cell > .buttons.count-5 .button {
+.ui-list-window > .row > .cell > .buttons.count-5 .button {
   width: 20%;
 }
 .ui-window > .row > .cell > .buttons.count-5 .button .text,
-.ui-list-window > .row > .cell > .buttons.count-5 .button .text,
-.game-ui .building-cats > .row > .cell > .buttons.count-5 .button .text {
+.ui-list-window > .row > .cell > .buttons.count-5 .button .text {
   font-size: 6pt;
 }
 .ui-window > .row > .cell > .buttons.count-4 .button,
-.ui-list-window > .row > .cell > .buttons.count-4 .button,
-.game-ui .building-cats > .row > .cell > .buttons.count-4 .button {
+.ui-list-window > .row > .cell > .buttons.count-4 .button {
   width: 25%;
 }
 .ui-window > .row > .cell > .buttons.count-4 .button .text,
-.ui-list-window > .row > .cell > .buttons.count-4 .button .text,
-.game-ui .building-cats > .row > .cell > .buttons.count-4 .button .text {
+.ui-list-window > .row > .cell > .buttons.count-4 .button .text {
   font-size: 7pt;
 }
 .ui-window > .row > .cell > .buttons.count-3 .button,
-.ui-list-window > .row > .cell > .buttons.count-3 .button,
-.game-ui .building-cats > .row > .cell > .buttons.count-3 .button {
+.ui-list-window > .row > .cell > .buttons.count-3 .button {
   width: 34%;
 }
 .ui-window > .row > .cell > .buttons.count-3 .button + .button,
-.ui-list-window > .row > .cell > .buttons.count-3 .button + .button,
-.game-ui .building-cats > .row > .cell > .buttons.count-3 .button + .button {
+.ui-list-window > .row > .cell > .buttons.count-3 .button + .button {
   width: 33%;
 }
 .ui-window > .row > .cell > .buttons.count-2 .button,
-.ui-list-window > .row > .cell > .buttons.count-2 .button,
-.game-ui .building-cats > .row > .cell > .buttons.count-2 .button {
+.ui-list-window > .row > .cell > .buttons.count-2 .button {
   width: 50%;
 }
 .ui-window > .row > .cell > .buttons.count-1 .button,
-.ui-list-window > .row > .cell > .buttons.count-1 .button,
-.game-ui .building-cats > .row > .cell > .buttons.count-1 .button {
+.ui-list-window > .row > .cell > .buttons.count-1 .button {
   width: 100%;
 }
-.ui-list-window > .row > .cell > .body,
-.game-ui .building-cats > .row > .cell > .body {
+.ui-list-window > .row > .cell > .body {
   overflow-y: scroll;
 }
-.ui-list-window .item,
-.game-ui .building-cats .item {
+.ui-list-window .item {
   float: left;
   width: 46%;
   margin: 2%;
@@ -924,6 +874,14 @@ input {
   display: inline-block;
   vertical-align: middle;
 }
+.game-ui #splash {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+.game-ui #splash > div {
+  display: inline-block;
+}
 @-webkit-keyframes redPulse {
   from {
     color: white;
@@ -1000,368 +958,21 @@ input {
   cursor: pointer;
   pointer-events: all;
 }
-.game-ui .building-list-view .item {
-  float: left;
-  width: 46%;
-  margin: 2%;
-  position: relative;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
-}
-.game-ui .building-list-view .item:after {
-  content: "";
-  display: block;
-}
-.game-ui .building-list-view .img-space {
-  background-color: #4ebaba;
-  border: 1px solid #73c8c8;
-  border-bottom-color: #3c9999;
-  border-right-color: #3c9999;
-}
-.game-ui .building-list-view .img-space .space {
-  background-color: #4ebaba;
-  border: 1px solid #3c9999;
-  border-bottom-color: #73c8c8;
-  border-right-color: #73c8c8;
-  background-color: #fff;
-  margin: 4%;
-  padding: 4%;
-  position: relative;
-}
-.game-ui .building-list-view .img-space .space:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
-.game-ui .building-list-view .img-space .space .img {
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-  width: 92%;
-  height: 92%;
-}
-.game-ui .building-list-view .name {
-  background-color: #4ebaba;
-  border: 1px solid #73c8c8;
-  border-bottom-color: #3c9999;
-  border-right-color: #3c9999;
-  height: 20%;
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 4% 0%;
-}
-.game-ui .building-list-view .buttons {
+.game-ui .prompt-view .body {
   font-size: 0;
-}
-.game-ui .building-list-view .buttons .build,
-.game-ui .building-list-view .buttons .info {
-  font-size: 10pt;
-  display: inline-block;
-  width: 50%;
-  background-color: #2e9c9c;
-  border: 1px solid #3ac3c3;
-  border-bottom-color: #227575;
-  border-right-color: #227575;
-  color: #fff;
-  text-align: center;
-  padding: 8% 0%;
-}
-.game-ui .building-list-view .buttons .build.active,
-.game-ui .building-list-view .buttons .info.active {
-  background-color: #2e9c9c;
-  border: 1px solid #227575;
-  border-bottom-color: #3ac3c3;
-  border-right-color: #3ac3c3;
-}
-.game-ui .building-list-view .buttons .build.danger,
-.game-ui .building-list-view .buttons .info.danger {
-  background-color: #2e9c9c;
-  border: 1px solid #3ac3c3;
-  border-bottom-color: #227575;
-  border-right-color: #227575;
-}
-.game-ui .building-list-view .buttons .build.danger.active,
-.game-ui .building-list-view .buttons .info.danger.active {
-  background-color: #2e9c9c;
-  border: 1px solid #227575;
-  border-bottom-color: #3ac3c3;
-  border-right-color: #3ac3c3;
-}
-.game-ui .building-list-view .buttons .build.success,
-.game-ui .building-list-view .buttons .info.success {
-  background-color: #2e9c9c;
-  border: 1px solid #3ac3c3;
-  border-bottom-color: #227575;
-  border-right-color: #227575;
-}
-.game-ui .building-list-view .buttons .build.success.active,
-.game-ui .building-list-view .buttons .info.success.active {
-  background-color: #2e9c9c;
-  border: 1px solid #227575;
-  border-bottom-color: #3ac3c3;
-  border-right-color: #3ac3c3;
-}
-.game-ui .building-list-view .buttons .build.warning,
-.game-ui .building-list-view .buttons .info.warning {
-  background-color: #2e9c9c;
-  border: 1px solid #3ac3c3;
-  border-bottom-color: #227575;
-  border-right-color: #227575;
-}
-.game-ui .building-list-view .buttons .build.warning.active,
-.game-ui .building-list-view .buttons .info.warning.active {
-  background-color: #2e9c9c;
-  border: 1px solid #227575;
-  border-bottom-color: #3ac3c3;
-  border-right-color: #3ac3c3;
-}
-.game-ui .building-cats .item:after {
-  content: "";
-  display: block;
-  padding-bottom: 80%;
-}
-.game-ui .building-cats .item .body {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-}
-.game-ui .building-cats .cat-image {
-  height: 80%;
-  width: 100%;
   text-align: center;
 }
-.game-ui .building-cats .cat-image .cat-img {
+.game-ui .prompt-view .body .centerer {
   display: inline-block;
-  vertical-align: middle;
-  height: 90%;
-  width: 90%;
-  background-size: contain;
-  background-position: 50% 50%;
-  background-image: url("../img/building.png");
-  background-repeat: no-repeat;
+  font-size: 12pt;
+  width: 80%;
 }
-.game-ui .building-cats .cat-name {
-  text-align: center;
-  height: 20%;
+.game-ui .prompt-view .body .centerer label {
+  text-align: left;
+}
+.game-ui .prompt-view .body .centerer input {
+  display: block;
   width: 100%;
-  color: #fff;
-}
-.game-ui .building-cats .item.small .body .cat-image .cat-img {
-  background-image: url("../img/small.png");
-}
-.game-ui .building-view > .row > .cell > .body .eye {
-  background-color: #4ebaba;
-  border: 1px solid #3c9999;
-  border-bottom-color: #73c8c8;
-  border-right-color: #73c8c8;
-  margin: 2%;
-  width: 40%;
-  position: relative;
-  background-color: #fff;
-}
-.game-ui .building-view > .row > .cell > .body .eye:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-}
-.game-ui .building-view > .row > .cell > .body .eye > img,
-.game-ui .building-view > .row > .cell > .body .eye > .img {
-  display: block;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-  width: 92%;
-  height: 92%;
-  margin: 4%;
-}
-.game-ui .building-view > .row > .cell > .body .params {
-  position: absolute;
-  top: 0%;
-  right: 2%;
-  width: 54%;
-  margin-top: 2%;
-  line-height: 1.4;
-}
-.game-ui .building-view > .row > .cell > .body .params > div {
-  display: inline-block;
-}
-.game-ui .building-view > .row > .cell > .body .params > div:first-letter {
-  text-transform: capitalize;
-}
-.game-ui .building-view > .row > .cell > .body .info {
-  margin: 2%;
-}
-.game-ui .city-view .map-tab-content {
-  overflow-y: auto;
-  height: 100%;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container {
-  padding: 2%;
-  height: 100%;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-container {
-  background-color: #fff;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-container:after {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-buttons {
-  margin-top: 2%;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-buttons .map-button {
-  background-color: #2e9c9c;
-  border: 1px solid #3ac3c3;
-  border-bottom-color: #227575;
-  border-right-color: #227575;
-  color: #fff;
-  float: left;
-  padding: 2%;
-  margin: 0 2% 2% 0;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-buttons .map-button.active {
-  background-color: #2e9c9c;
-  border: 1px solid #227575;
-  border-bottom-color: #3ac3c3;
-  border-right-color: #3ac3c3;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-buttons .map-button.danger {
-  background-color: #2e9c9c;
-  border: 1px solid #3ac3c3;
-  border-bottom-color: #227575;
-  border-right-color: #227575;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-buttons .map-button.danger.active {
-  background-color: #2e9c9c;
-  border: 1px solid #227575;
-  border-bottom-color: #3ac3c3;
-  border-right-color: #3ac3c3;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-buttons .map-button.success {
-  background-color: #2e9c9c;
-  border: 1px solid #3ac3c3;
-  border-bottom-color: #227575;
-  border-right-color: #227575;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-buttons .map-button.success.active {
-  background-color: #2e9c9c;
-  border: 1px solid #227575;
-  border-bottom-color: #3ac3c3;
-  border-right-color: #3ac3c3;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-buttons .map-button.warning {
-  background-color: #2e9c9c;
-  border: 1px solid #3ac3c3;
-  border-bottom-color: #227575;
-  border-right-color: #227575;
-}
-.game-ui .city-view .map-tab-content > .map-tab-content-container > .map-buttons .map-button.warning.active {
-  background-color: #2e9c9c;
-  border: 1px solid #227575;
-  border-bottom-color: #3ac3c3;
-  border-right-color: #3ac3c3;
-}
-.game-ui .city-view .info-tab-content .bird-eye-container {
-  width: 40%;
-  margin: 2%;
-  background-color: #fff;
-  position: relative;
-}
-.game-ui .city-view .info-tab-content .bird-eye-container:after {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
-.game-ui .city-view .info-tab-content .bird-eye-container > * {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-}
-.game-ui .city-view .info-tab-content .info-container {
-  position: absolute;
-  margin: 2% 2% 0 0;
-  width: 54%;
-  right: 0%;
-  top: 0%;
-  line-height: 1.4;
-}
-.game-ui .city-view .info-tab-content .hr {
-  margin: 2%;
-}
-.game-ui .city-view .info-tab-content .res-cnt {
-  margin: 2%;
-}
-.game-ui .city-view .info-tab-content .res-cnt .res-list {
-  margin-top: 2%;
-}
-.game-ui .top-bar {
-  height: 24px;
-  position: relative;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
-}
-.game-ui .top-bar .city-name {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  color: transparent;
-  text-shadow: 1px 0px 0px rgba(255, 255, 255, 0.4), 0px -1px 0px rgba(0, 0, 0, 0.4);
-}
-.game-ui .top-bar .left {
-  float: left;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
-.game-ui .top-bar .left .section {
-  float: left;
-  padding-left: 1%;
-}
-.game-ui .top-bar .right {
-  position: absolute;
-  float: right;
-  height: 100%;
-  width: 100%;
-}
-.game-ui .top-bar .right .section {
-  float: right;
-  padding-right: 1%;
-}
-.game-ui .top-bar .section {
-  float: left;
-  height: 100%;
-}
-.game-ui .top-bar .section > .icon-val {
-  font-size: 0;
-  white-space: nowrap;
-  height: 100%;
-}
-.game-ui .top-bar .section > .icon-val .icon {
-  display: inline-block;
-  height: 80%;
-  vertical-align: middle;
-}
-.game-ui .top-bar .section > .icon-val .icon img {
-  display: block;
-  height: 100%;
-}
-.game-ui .top-bar .section > .icon-val .text {
-  padding-left: 1%;
-  display: inline-block;
-  height: 100%;
-  font-size: 8pt;
-  vertical-align: middle;
 }
 .game-ui .game-view {
   height: 100%;
@@ -1385,29 +996,16 @@ input {
   bottom: 0;
   right: 0;
 }
-.game-ui #splash {
-  height: 100%;
-  width: 100%;
-  text-align: center;
+.game-ui .game-view > .row > .cell > .body-overlay-slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
 }
-.game-ui #splash > div {
-  display: inline-block;
-}
-.game-ui .prompt-view .body {
-  font-size: 0;
-  text-align: center;
-}
-.game-ui .prompt-view .body .centerer {
-  display: inline-block;
-  font-size: 12pt;
-  width: 80%;
-}
-.game-ui .prompt-view .body .centerer label {
-  text-align: left;
-}
-.game-ui .prompt-view .body .centerer input {
-  display: block;
-  width: 100%;
+.game-ui .game-view > .row > .cell > .body-overlay-slot > * {
+  pointer-events: all;
 }
 *,
 *:before,
