@@ -4,6 +4,7 @@ define(function (require) {
     var SplashScreen = require("../modules/splash/js/main");
     var GameScreen = require("../modules/gamescreen/js/gamescreen");
     var $ = require("jquery");
+    var API = require("../../ui_/apps/game/js/api");
 
     var events = {
         ready: 0
@@ -47,7 +48,7 @@ define(function (require) {
             var Vkaria = Vkaria.Vkaria;
             var Core = Isometrica.Core;
             var core = self._core = new Core.Logic();
-            var client = self._client = new Vkaria(core, self);
+            var client = self._client = new Vkaria(core, new API(self, true));
             callback(core, client);
         });
     };

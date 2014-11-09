@@ -95,7 +95,7 @@ define(function(require){
     CameraComponent.prototype.setViewport = function (viewport) {
         this.viewport = viewport;
 
-        this.setup(viewport.width, viewport.height, 100);
+        this.viewportResizeEventHandler(viewport);
 
         Events.on(this.viewport, this.viewport.events.resize, this.viewportResizeEventHandler);
 

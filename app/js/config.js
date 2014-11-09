@@ -53,7 +53,7 @@ define(function (require) {
             },
             'marionette' : {
                 deps: ['Backbone'],
-                exports: "Backbone"
+                exports: "Backbone.Marionette"
             }
         }
     });

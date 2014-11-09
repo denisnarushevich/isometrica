@@ -17,8 +17,6 @@ define(function (require) {
         this.context.imageSmoothingEnabled = false;
         this.context.webkitImageSmoothingEnabled = false;
         this.graphics = graphics;
-        this.width = 0;
-        this.height = 0;
 
         this.viewportMatrix = new Float32Array(16);
 
@@ -35,6 +33,7 @@ define(function (require) {
         window.addEventListener('resize', function(){
             viewport.setSize(viewport.canvas.offsetWidth, viewport.canvas.offsetHeight);
         });
+        this.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight);
 
         this.canvas.addEventListener("mousedown", function(e){
             var viewportBoundingRect = e.target.getBoundingClientRect();

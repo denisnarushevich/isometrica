@@ -82,7 +82,7 @@ define(function (require) {
         var root = this.root;
 
         //render hint
-        root.ui.gameScreen().worldScreen().showHint("Pick a tile where you want your city to be located!");
+        root.ui.showHint("Pick a tile where you want your city to be located!");
 
         //enable selector
         var selector = new TileSelector(root);
@@ -97,14 +97,14 @@ define(function (require) {
         });
 
         //bind ui
-        var controls = root.ui.gameScreen().showActionControls();
+        var controls = root.ui.showButtons("action");
         controls.onSubmit = function () {
             var tile = selector.selectedTile();
 
-            root.ui.gameScreen().showPrompt("Give city a name!", function (val) {
+            root.ui.showPrompt("Give city a name!", function (val) {
                 root.core.cities.establishCity(tile, val);
-                root.ui.gameScreen().showWorld();
-                root.ui.gameScreen().worldScreen().hideHint();
+                root.ui.show("viewport");
+                root.ui.hideHint();
             }, "My City");
 
             //disable hiliters & selector
