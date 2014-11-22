@@ -1,6 +1,14 @@
 define(function (require) {
     var Backbone = require("backbone");
+    var Marionette = require("marionette");
     var cityTemplate = require("hbs!../../templates/city");
+
+    var View = Marionette.ItemView.extend();
+
+    View.prototype.template = cityTemplate;
+    View.prototype.className = "city-view ui-window";
+
+    return View;
 
     return Backbone.View.extend({
         tagName: "span",

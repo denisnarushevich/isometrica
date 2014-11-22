@@ -530,7 +530,7 @@ th {
 .game-ui #splash:before,
 .game-ui .world-view .hint-pos:before,
 .game-ui .world-view .btns .slot:before,
-.game-ui .prompt-view .body:before,
+.game-ui .prompt-view:before,
 .ui-list-window > .row > .cell > .tabs-section .tabs .tab:before,
 .ui-list-window > .row > .cell > .buttons > .button:before {
   content: "";
@@ -958,19 +958,20 @@ input {
   cursor: pointer;
   pointer-events: all;
 }
-.game-ui .prompt-view .body {
+.game-ui .prompt-view {
+  height: 100%;
   font-size: 0;
   text-align: center;
 }
-.game-ui .prompt-view .body .centerer {
+.game-ui .prompt-view .centerer {
   display: inline-block;
   font-size: 12pt;
   width: 80%;
 }
-.game-ui .prompt-view .body .centerer label {
+.game-ui .prompt-view .centerer label {
   text-align: left;
 }
-.game-ui .prompt-view .body .centerer input {
+.game-ui .prompt-view .centerer input {
   display: block;
   width: 100%;
 }

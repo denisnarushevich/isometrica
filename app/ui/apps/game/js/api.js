@@ -54,7 +54,14 @@ define(function (require) {
         if(this.fallback)
             return this.app.navigate(path);
 
+
         console.log("UI:API:navigate", path);
+        if(path.indexOf("city") !== -1)
+            this.showCity(0);
+    };
+
+    API.prototype.showCity = function(cityId){
+        this.app.windows.display("city", cityId);
     };
 
     API.prototype.showPrompt = function(message, callback, value, placeholder){

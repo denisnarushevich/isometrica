@@ -1,18 +1,35 @@
 define(function (require) {
-    var MainView = require("./views/city");
-    var InfoView = require("./views/info");
-    var MapView = require("./views/map");
-
-    var CityModel = require("./models/city");
+    var Backbone = require("backbone");
+    var View = require("./views/city");
 
     function getCity(self, id){
-        var city = self.game.client.core.cities.getCity(id);
         return new CityModel({
             name: city.name()
         },{
             city: city
         });
     }
+
+    function City(city){
+        this.model = City.cityModel(city);
+
+        this.view = new View({
+            model: this.model
+        });
+    }
+
+    City.Model = Backbone.Model;
+    City.View = View;
+
+    //TODO: subscribe to city events, and unsubscribe on model destroy
+    City.cityModel = function(city){
+        return new Backbone.Model({
+            cityId: city.id(),
+            name: city.name()
+        });
+    };
+
+    return City;
 
     function Module(game) {
         this.game = game;

@@ -3,7 +3,7 @@ define(function (require) {
     var template = require("hbs!./templates/prompt");
 
     return Marionette.ItemView.extend({
-        className: "prompt-view ui-window",
+        className: "prompt-view",
         template: template,
         events: {
             "click .button.submit": "submit",
