@@ -1,34 +1,42 @@
-define(function(require){
+define(function (require) {
     var Backbone = require("backbone");
     var View = require("./view");
     var Window = require("ui/components/core/window/window");
 
-    function Prompt(msg, cb, val, ph){
-        var window = new Window();
-
-        this.view = window.view;
-
-        this.model = new Backbone.Model({
-            msg: msg,
-            val: val,
-            ph: ph
-        });
+    function Prompt(msg, cb, val, ph) {
+        Window.call(this);
 
         var v = new View({
-            model: this.model,
-            callback: cb
+            model: new Backbone.Model({
+                msg: msg,
+                val: val,
+                ph: ph
+            })
         });
 
-        window.view.on("show", function() {
-            window.view.bodyRegion.show(v);
-            window.setupButton(2, "Submit", "tick", function(){
-                cb(v.value());
-            });
-            window.setupButton(1, "Cancel", "cross", function(){
+        var buttons = this.view.model.buttons;
 
-            });
+        buttons.add({
+            icon: "cross",
+            text: "Cancel",
+            index: 0
+        });
+
+        buttons.add({
+            icon: "tick",
+            text: "Submit",
+            index: 1
+        }).action = function () {
+            cb(v.value());
+        };
+
+        var self = this;
+        this.view.on("show", function () {
+            self.view.bodyRegion.show(v);
         });
     }
+
+    Prompt.prototype = Object.create(Window.prototype);
 
     return Prompt;
 });

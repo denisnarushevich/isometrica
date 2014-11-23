@@ -5,19 +5,8 @@ define(function (require) {
     return Marionette.ItemView.extend({
         className: "prompt-view",
         template: template,
-        events: {
-            "click .button.submit": "submit",
-            "click .button.discard": "discard"
-        },
         value: function(){
-            var v = $("input", this.$el).val();
-            return v;
-        },
-        submit: function(){
-            this.options.callback(this.value());
-        },
-        discard: function(){
-
+            return $("input", this.$el).val();
         }
     });
 });

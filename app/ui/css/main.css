@@ -425,9 +425,9 @@ th {
 }
 
 .pixelated,
-.ui-window > .row > .cell > .buttons > .button .icon,
+.ui-window > .row > .cell > .footer > .buttons > .button .icon,
 .game-ui .world-view .btns .slot .btn,
-.ui-list-window > .row > .cell > .buttons > .button .icon {
+.ui-list-window > .row > .cell > .footer > .buttons > .button .icon {
   image-rendering: optimizeSpeed;
   /* Legal fallback */
   image-rendering: -moz-crisp-edges;
@@ -526,13 +526,13 @@ th {
 }
 .middle-position:before,
 .ui-window > .row > .cell > .tabs-section .tabs .tab:before,
-.ui-window > .row > .cell > .buttons > .button:before,
+.ui-window > .row > .cell > .footer > .buttons > .button:before,
 .game-ui #splash:before,
 .game-ui .world-view .hint-pos:before,
 .game-ui .world-view .btns .slot:before,
 .game-ui .prompt-view:before,
 .ui-list-window > .row > .cell > .tabs-section .tabs .tab:before,
-.ui-list-window > .row > .cell > .buttons > .button:before {
+.ui-list-window > .row > .cell > .footer > .buttons > .button:before {
   content: "";
   display: inline-block;
   height: 100%;
@@ -641,13 +641,13 @@ th {
   left: 0;
   transition: left 0.33s, opacity 0s 0s;
 }
-.ui-window > .row > .cell > .buttons,
-.ui-list-window > .row > .cell > .buttons {
+.ui-window > .row > .cell > .footer > .buttons,
+.ui-list-window > .row > .cell > .footer > .buttons {
   height: 64px;
   overflow: hidden;
 }
-.ui-window > .row > .cell > .buttons > .button,
-.ui-list-window > .row > .cell > .buttons > .button {
+.ui-window > .row > .cell > .footer > .buttons > .button,
+.ui-list-window > .row > .cell > .footer > .buttons > .button {
   float: left;
   width: 20%;
   height: 100%;
@@ -657,49 +657,49 @@ th {
   overflow: hidden;
   display: block;
 }
-.ui-window > .row > .cell > .buttons > .button .icon,
-.ui-list-window > .row > .cell > .buttons > .button .icon {
+.ui-window > .row > .cell > .footer > .buttons > .button .icon,
+.ui-list-window > .row > .cell > .footer > .buttons > .button .icon {
   vertical-align: middle;
   display: inline-block;
   height: 50%;
   max-width: 25%;
 }
-.ui-window > .row > .cell > .buttons > .button .text,
-.ui-list-window > .row > .cell > .buttons > .button .text {
+.ui-window > .row > .cell > .footer > .buttons > .button .text,
+.ui-list-window > .row > .cell > .footer > .buttons > .button .text {
   display: inline-block;
   vertical-align: middle;
   font-size: 10pt;
 }
-.ui-window > .row > .cell > .buttons.count-5 .button,
-.ui-list-window > .row > .cell > .buttons.count-5 .button {
+.ui-window > .row > .cell > .footer > .buttons.count-5 .button,
+.ui-list-window > .row > .cell > .footer > .buttons.count-5 .button {
   width: 20%;
 }
-.ui-window > .row > .cell > .buttons.count-5 .button .text,
-.ui-list-window > .row > .cell > .buttons.count-5 .button .text {
+.ui-window > .row > .cell > .footer > .buttons.count-5 .button .text,
+.ui-list-window > .row > .cell > .footer > .buttons.count-5 .button .text {
   font-size: 6pt;
 }
-.ui-window > .row > .cell > .buttons.count-4 .button,
-.ui-list-window > .row > .cell > .buttons.count-4 .button {
+.ui-window > .row > .cell > .footer > .buttons.count-4 .button,
+.ui-list-window > .row > .cell > .footer > .buttons.count-4 .button {
   width: 25%;
 }
-.ui-window > .row > .cell > .buttons.count-4 .button .text,
-.ui-list-window > .row > .cell > .buttons.count-4 .button .text {
+.ui-window > .row > .cell > .footer > .buttons.count-4 .button .text,
+.ui-list-window > .row > .cell > .footer > .buttons.count-4 .button .text {
   font-size: 7pt;
 }
-.ui-window > .row > .cell > .buttons.count-3 .button,
-.ui-list-window > .row > .cell > .buttons.count-3 .button {
+.ui-window > .row > .cell > .footer > .buttons.count-3 .button,
+.ui-list-window > .row > .cell > .footer > .buttons.count-3 .button {
   width: 34%;
 }
-.ui-window > .row > .cell > .buttons.count-3 .button + .button,
-.ui-list-window > .row > .cell > .buttons.count-3 .button + .button {
+.ui-window > .row > .cell > .footer > .buttons.count-3 .button + .button,
+.ui-list-window > .row > .cell > .footer > .buttons.count-3 .button + .button {
   width: 33%;
 }
-.ui-window > .row > .cell > .buttons.count-2 .button,
-.ui-list-window > .row > .cell > .buttons.count-2 .button {
+.ui-window > .row > .cell > .footer > .buttons.count-2 .button,
+.ui-list-window > .row > .cell > .footer > .buttons.count-2 .button {
   width: 50%;
 }
-.ui-window > .row > .cell > .buttons.count-1 .button,
-.ui-list-window > .row > .cell > .buttons.count-1 .button {
+.ui-window > .row > .cell > .footer > .buttons.count-1 .button,
+.ui-list-window > .row > .cell > .footer > .buttons.count-1 .button {
   width: 100%;
 }
 .ui-list-window > .row > .cell > .body {
