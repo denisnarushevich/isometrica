@@ -11,6 +11,7 @@ define(function (require) {
     var Resource = require("./resourcecode");
     var BuildingCode = require("data/buildingcode");
     var Terrain = require("./terrain");
+    var reactiveProperty = require("reactive-property");
 
     var Core = namespace("Isometrica.Core");
 
@@ -19,8 +20,7 @@ define(function (require) {
     var id = 0;
 
     var events = City.events = City.prototype.events = {
-        update: 0,
-        rename: 1
+        update: 0
     };
 
     /**
@@ -31,7 +31,6 @@ define(function (require) {
      */
     function City(world, tile) {
         this.update = Events.event(events.update);
-        this.rename = Events.event(events.rename);
 
         this.root = this.world = world;
         this._id = id++;
@@ -60,9 +59,11 @@ define(function (require) {
 
     City.events = events;
 
-    City.prototype._name = "";
     City.prototype.world = null;
     City.prototype._tile = -1;
+
+    City.prototype.mayor = reactiveProperty(null);
+    City.prototype.name = reactiveProperty("");
 
     City.prototype.init = function(){
         this.buildingService.buildBuilding(BuildingCode.cityHall, this.tile());
@@ -92,20 +93,6 @@ define(function (require) {
      */
     City.prototype.id = function(){
         return this._id;
-    };
-
-    /**
-     *
-     * @param value
-     * @returns {*}
-     */
-    City.prototype.name = function(value) {
-        if (value !== undefined) {
-            this._name = value;
-            Events.fire(this, events.rename, value);
-            return value;
-        }
-        return this._name;
     };
 
     /**
@@ -155,12 +142,13 @@ define(function (require) {
      * @param name
      * @returns {*}
      */
-    City.establish = function(world, tile, name) {
+    City.establish = function(world, tile, name, mayor) {
         if(!City.canEstablish(world, tile))
             return null;
 
         var city = new City(world, tile);
         city.name(name);
+        city.mayor(mayor);
         return city;
     };
 

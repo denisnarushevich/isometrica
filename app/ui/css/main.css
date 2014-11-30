@@ -426,7 +426,8 @@ th {
 
 .pixelated,
 .ui-window > .row > .cell > .footer > .buttons > .button .icon,
-.game-ui .world-view .btns .slot .btn,
+.world-view .btns .slot .btn,
+.top-bar .section > .icon-val .icon,
 .ui-list-window > .row > .cell > .footer > .buttons > .button .icon {
   image-rendering: optimizeSpeed;
   /* Legal fallback */
@@ -447,6 +448,7 @@ th {
 }
 .ui-block,
 .ui-window > .row > .cell > .body .tab-content,
+.top-bar,
 .ui-list-window > .row > .cell > .body .tab-content {
   background-color: #4ebaba;
   border: 1px solid #73c8c8;
@@ -527,10 +529,13 @@ th {
 .middle-position:before,
 .ui-window > .row > .cell > .tabs-section .tabs .tab:before,
 .ui-window > .row > .cell > .footer > .buttons > .button:before,
-.game-ui #splash:before,
-.game-ui .world-view .hint-pos:before,
-.game-ui .world-view .btns .slot:before,
-.game-ui .prompt-view:before,
+.prompt-view:before,
+#splash:before,
+.world-view .hint-pos:before,
+.world-view .btns .slot:before,
+.top-bar .city-name:before,
+.top-bar .section > .icon-val:before,
+.top-bar .section > .icon-val .text:before,
 .ui-list-window > .row > .cell > .tabs-section .tabs .tab:before,
 .ui-list-window > .row > .cell > .footer > .buttons > .button:before {
   content: "";
@@ -874,12 +879,29 @@ input {
   display: inline-block;
   vertical-align: middle;
 }
-.game-ui #splash {
+.prompt-view {
+  height: 100%;
+  font-size: 0;
+  text-align: center;
+}
+.prompt-view .centerer {
+  display: inline-block;
+  font-size: 12pt;
+  width: 80%;
+}
+.prompt-view .centerer label {
+  text-align: left;
+}
+.prompt-view .centerer input {
+  display: block;
+  width: 100%;
+}
+#splash {
   height: 100%;
   width: 100%;
   text-align: center;
 }
-.game-ui #splash > div {
+#splash > div {
   display: inline-block;
 }
 @-webkit-keyframes redPulse {
@@ -910,12 +932,12 @@ input {
     color: #aaaaff;
   }
 }
-.game-ui .world-view canvas {
+.world-view canvas {
   display: block;
   width: 100%;
   height: 100%;
 }
-.game-ui .world-view .hint-pos {
+.world-view .hint-pos {
   position: absolute;
   top: 0;
   left: 0;
@@ -925,7 +947,7 @@ input {
   pointer-events: none;
   font-size: 0;
 }
-.game-ui .world-view .hint-pos > .hint {
+.world-view .hint-pos > .hint {
   display: inline-block;
   font-size: 12pt;
   animation-duration: 2s;
@@ -935,7 +957,7 @@ input {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-name: redPulse;
 }
-.game-ui .world-view .btns {
+.world-view .btns {
   position: absolute;
   bottom: 0%;
   left: 0%;
@@ -944,60 +966,101 @@ input {
   font-size: 0;
   pointer-events: none;
 }
-.game-ui .world-view .btns .slot {
+.world-view .btns .slot {
   height: 100%;
   width: 20%;
   float: left;
   display: block;
   text-align: center;
 }
-.game-ui .world-view .btns .slot .btn {
+.world-view .btns .slot .btn {
   vertical-align: middle;
   display: inline-block;
   height: 80%;
   cursor: pointer;
   pointer-events: all;
 }
-.game-ui .prompt-view {
+.top-bar {
+  height: 24px;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
+}
+.top-bar .city-name {
+  position: absolute;
+  width: 100%;
   height: 100%;
-  font-size: 0;
   text-align: center;
+  color: transparent;
+  text-shadow: 1px 0px 0px rgba(255, 255, 255, 0.4), 0px -1px 0px rgba(0, 0, 0, 0.4);
 }
-.game-ui .prompt-view .centerer {
-  display: inline-block;
-  font-size: 12pt;
-  width: 80%;
+.top-bar .left {
+  float: left;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
-.game-ui .prompt-view .centerer label {
-  text-align: left;
+.top-bar .left .section {
+  float: left;
+  padding-left: 1%;
 }
-.game-ui .prompt-view .centerer input {
-  display: block;
+.top-bar .right {
+  position: absolute;
+  float: right;
+  height: 100%;
   width: 100%;
 }
-.game-ui .game-view {
+.top-bar .right .section {
+  float: right;
+  padding-right: 1%;
+}
+.top-bar .section {
+  float: left;
+  height: 100%;
+}
+.top-bar .section > .icon-val {
+  font-size: 0;
+  white-space: nowrap;
+  height: 100%;
+}
+.top-bar .section > .icon-val .icon {
+  display: inline-block;
+  height: 80%;
+  vertical-align: middle;
+}
+.top-bar .section > .icon-val .icon img {
+  display: block;
+  height: 100%;
+}
+.top-bar .section > .icon-val .text {
+  padding-left: 1%;
+  display: inline-block;
+  height: 100%;
+  font-size: 8pt;
+  vertical-align: middle;
+}
+.game-view {
   height: 100%;
   width: 100%;
   display: table;
 }
-.game-ui .game-view > .row {
+.game-view > .row {
   display: table-row;
 }
-.game-ui .game-view > .row > .cell {
+.game-view > .row > .cell {
   display: table-cell;
   position: relative;
 }
-.game-ui .game-view > .row > .cell.flex {
+.game-view > .row > .cell.flex {
   height: 100%;
 }
-.game-ui .game-view > .row > .cell > .body-slot {
+.game-view > .row > .cell > .body-slot {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
 }
-.game-ui .game-view > .row > .cell > .body-overlay-slot {
+.game-view > .row > .cell > .body-overlay-slot {
   position: absolute;
   top: 0;
   left: 0;
@@ -1005,7 +1068,7 @@ input {
   right: 0;
   pointer-events: none;
 }
-.game-ui .game-view > .row > .cell > .body-overlay-slot > * {
+.game-view > .row > .cell > .body-overlay-slot > * {
   pointer-events: all;
 }
 *,

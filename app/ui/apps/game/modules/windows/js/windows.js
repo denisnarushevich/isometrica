@@ -1,7 +1,7 @@
 define(function(require){
    var Marionette = require("marionette");
     var _ = require("underscore");
-    var Prompt = require("../../../components/prompt/prompt");
+    var Prompt = require("ui/components/core/prompt/prompt");
     var City = require("../../../components/city/js/city");
 
     var Module = Marionette.Module.extend();
@@ -13,9 +13,9 @@ define(function(require){
     };
 
     Module.prototype.showPrompt = function(msg, cb, val, ph){
-        var prompt = new Prompt(msg, cb, val, ph);
+        var promptView = Prompt.create(msg, cb, val, ph);
 
-        this.region.show(prompt.view);
+        this.region.show(promptView);
     };
 
     Module.prototype.showCity = function(cityId){

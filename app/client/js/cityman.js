@@ -40,7 +40,8 @@ define(function (require) {
     function onNewCity(sender, city, self) {
         setupLabel(self, city);
 
-        Events.on(city, City.events.rename, onCityRename, self)
+        city.name(city.name.CHANGE, onCityRename, false, self);
+        //Events.on(city, City.events.rename, onCityRename, self)
     }
 
     function onCityRename(city, name, self) {
@@ -102,7 +103,9 @@ define(function (require) {
             var tile = selector.selectedTile();
 
             root.ui.showPrompt("Give city a name!", function (val) {
-                root.core.cities.establishCity(tile, val);
+                var mayor = root.player;
+                var city = root.core.cities.establishCity(tile, val, mayor);
+                mayor.city(city);
                 root.ui.show("viewport");
                 root.ui.hideHint();
             }, "My City");

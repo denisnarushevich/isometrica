@@ -68,8 +68,6 @@ define(function (require) {
 
     function TileSelector(root) {
         this.root = root;
-        this._tile0 = RProp(-1);
-        this._tile1 = RProp(-1);
 
         this._terrain = root.terrain;
         var cam = this._cam = root.camera.cameraScript;
@@ -90,8 +88,8 @@ define(function (require) {
 
     TileSelector.events = events;
 
-    TileSelector.prototype._tile0 = -1;
-    TileSelector.prototype._tile1 = -1;
+    TileSelector.prototype._tile0 = RProp(-1);
+    TileSelector.prototype._tile1 = RProp(-1);
 
     TileSelector.prototype.selectedTiles = function () {
         var t0 = this._tile0(),

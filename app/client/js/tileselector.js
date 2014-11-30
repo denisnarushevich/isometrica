@@ -47,12 +47,11 @@ define(function (require) {
 
     function TileSelector(root) {
         this.root = root;
-        this._tile = RProp(-1);
 
         var cam = this._cam = root.camera.cameraScript;
 
         var cs = Events.on(cam, WorldCamera.events.inputClick, onClick, this);
-        var s = this._tile.onChange(onChange, false, this);
+        var s = this._tile(this._tile.CHANGE, onChange, false, this);
 
         Events.once(this, events.dispose, onDispose, cs);
         Events.once(this, events.dispose, onDispose, s);
@@ -60,7 +59,7 @@ define(function (require) {
 
     TileSelector.events = events;
 
-    TileSelector.prototype._tile = -1;
+    TileSelector.prototype._tile = RProp(-1);
 
     TileSelector.prototype.selectedTile = function(){
         return this._tile();

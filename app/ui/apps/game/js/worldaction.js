@@ -2,12 +2,14 @@ define(function(require){
    var ReactiveProperty = require("reactive-property");
 
     function WorldAction(){
-        this.rotation = ReactiveProperty(false);
-        this.canRotate = ReactiveProperty(true);
-        this.canSubmit = ReactiveProperty(true);
-        this.canDiscard = ReactiveProperty(true);
+
     }
 
+    WorldAction.prototype.rotation = ReactiveProperty(false);
+    WorldAction.prototype.canRotate = ReactiveProperty(true);
+    WorldAction.prototype.canSubmit = ReactiveProperty(true);
+    WorldAction.prototype.canDiscard = ReactiveProperty(true);
+    
     WorldAction.prototype.onSubmit = function(){};
     WorldAction.prototype.onDiscard = function(){};
     WorldAction.prototype.onRotate = function(){};

@@ -3,6 +3,7 @@ define(function (require) {
     var Windows = require("../modules/windows/js/windows");
     var Viewport = require("../modules/mainviewport/js/module");
     var LayoutView = require("./layout");
+    var TopBar = require("../modules/topbar/js/main");
     var API = require("./api");
 
     function loadClient(self, callback) {
@@ -26,6 +27,7 @@ define(function (require) {
 
     app.module("windows", Windows);
     app.module("viewport", Viewport);
+    app.module("topbar", TopBar);
 
     app.addInitializer(function (options) {
         //setup layout
@@ -44,6 +46,10 @@ define(function (require) {
 
             app.windows.start({
                 region: app.layout.overlayRegion
+            });
+
+            app.topbar.start({
+               region: app.layout.headRegion
             });
         });
     });
