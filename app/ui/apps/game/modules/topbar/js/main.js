@@ -1,5 +1,5 @@
 define(function (require) {
-    var View = require("./View");
+    var View = require("./ViewAAA");
     var Marionette = require("marionette");
     var Backbone = require("backbone");
 
