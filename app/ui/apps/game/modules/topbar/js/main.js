@@ -6,6 +6,17 @@ define(function (require) {
     var Core = require("core/main");
     var ResourceCode = Core.ResourceCode;
 
+    function onAdvance(s,a, self){
+        var model = self._model;
+        model.set("dt", s.toMDY());
+        model.set("gold", self.city.resources.getResources()[ResourceCode.money]);
+        model.set("population", self.city.population.getPopulation());
+    }
+
+    function onNameChange(city, args, self) {
+        self._model.set("cityName", city.name());
+    }
+
     var Module = Marionette.Module.extend();
 
     var p = Module.prototype;
@@ -13,33 +24,43 @@ define(function (require) {
     p.startWithParent = false;
 
     p.onStart = function (options) {
-        var player = this.app.client.player;
         var client = this.app.client;
+        var player = client.player;
 
         player.city(player.city.CHANGE, function (player, city, self) {
+            self._unsubscribe();
+
             if (city) {
-                var model = new Model({
+                self.city = city;
+
+                var model = self._model = new Model({
                     cityName: city.name(),
                     dt: client.core.time.toMDY()
                 });
 
-                city.name(city.name.CHANGE, function (city, args) {
-                    model.set("cityName", city.name());
-                }, false, self);
+                self._onNameTkn = city.name(city.name.CHANGE, onNameChange, false, self);
 
-                client.core.time.onAdvance(function(s,a){
-                    model.set("dt", s.toMDY());
-                    model.set("gold", city.resources.getResources()[ResourceCode.money]);
-                    model.set("population", city.population.getPopulation());
-                });
-
-
+                self._onAdvanceTkn = client.core.time.onAdvance(onAdvance, self);
 
                 options.region.show(new View({
                     model: model
                 }));
+            }else{
+                options.region.reset();
             }
         }, true, this);
+    };
+
+    p.onStop = function(){
+        this._unsubscribe();
+    };
+
+    p._unsubscribe = function(){
+        if(this._onAdvanceTkn)
+            this.app.client.core.time.onAdvance(this._onAdvanceTkn);
+
+        if(this.city && this._onNameTkn)
+            this.city.name(this.city.name.CHANGE, this._onNameTkn);
     };
 
     return Module;
