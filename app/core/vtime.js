@@ -1,5 +1,10 @@
 define(function (require) {
     var Events = require("events");
+    var namespace = require("namespace");
+
+    var Core = namespace("Isometrica.Core.Time");
+
+    Core.Time = VTime;
 
     var millisecondsInDay = 86400000,
         monthNames = [ "January", "February", "March", "April", "May", "June",
@@ -41,17 +46,31 @@ define(function (require) {
 
     VTime.prototype.constructor = VTime;
 
+    VTime.prototype.onYear = Events.event();
+
+    VTime.prototype.onMonth = Events.event();
+
+    VTime.prototype.onDay = Events.event();
+
+    VTime.prototype.onAdvance = Events.event();
+
     VTime.prototype.start = function(){
-        Events.fire(this,this.events.newYear, this.now);
-        Events.fire(this,this.events.newMonth, this.now);
-        Events.fire(this,this.events.newDay, this.now);
+        this.onYear(this, this.now);
+        this.onMonth(this, this.now);
+        this.onDay(this, this.now);
+        //Events.fire(this,this.events.newYear, this.now);
+        //Events.fire(this,this.events.newMonth, this.now);
+        //Events.fire(this,this.events.newDay, this.now);
     };
 
     VTime.prototype.setTime = function(now){
         this.now = now;
-        Events.fire(this,this.events.newYear, this.now);
-        Events.fire(this,this.events.newMonth, this.now);
-        Events.fire(this,this.events.newDay, this.now);
+        this.onYear(this, this.now);
+        this.onMonth(this, this.now);
+        this.onDay(this, this.now);
+        //Events.fire(this,this.events.newYear, this.now);
+        //Events.fire(this,this.events.newMonth, this.now);
+        //Events.fire(this,this.events.newDay, this.now);
     };
 
     //is supposed to be runned once in a second
@@ -69,17 +88,21 @@ define(function (require) {
         this.monthName = monthNames[this.month - 1];
         this.day = date.getDate();
 
-        Events.fire(this,this.events.advance, this);
+        this.onAdvance(this, this);
+        //Events.fire(this,this.events.advance, this);
 
-        Events.fire(this,this.events.newDay, this.now);
+        this.onDay(this, this.now);
+        //Events.fire(this,this.events.newDay, this.now);
 
         if(this.month !== this.prevMonth){
-            Events.fire(this,this.events.newMonth, this.now);
+            this.onMonth(this, this.now);
+            //Events.fire(this,this.events.newMonth, this.now);
             this.prevMonth = this.month;
         }
 
         if(this.year !== this.prevYear){
-            Events.fire(this,this.events.newYear, this.now);
+            this.onYear(this, this.now);
+            //Events.fire(this,this.events.newYear, this.now);
             this.prevYear = this.year;
             this.daysInYear = daysInYear(this.year);
         }

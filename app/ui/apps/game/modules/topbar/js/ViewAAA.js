@@ -11,5 +11,12 @@ define(function(require){
 //
     p.template = template;
 
+    p.initialize = function(opts){
+       var self = this;
+        this.model.on("change", function(){
+           self.render();
+        });
+    };
+
     return View;
 });

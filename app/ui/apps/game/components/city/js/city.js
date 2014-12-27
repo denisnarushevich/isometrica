@@ -2,7 +2,7 @@ define(function (require) {
     var Backbone = require("backbone");
     var View = require("./views/city");
 
-    function getCity(self, id){
+    function getCity(city, id){
         return new CityModel({
             name: city.name()
         },{
