@@ -22,7 +22,7 @@ define(function(require){
         var city = this.app.client.core.cities.getCity(cityId);
         var cityWindow = new City(city);
 
-        this.region.show(cityWindow.view);
+        this.region.show(cityWindow);
     };
 
     Module.prototype.display = function(name){

@@ -6,7 +6,7 @@ define(function (require) {
     var View = Marionette.ItemView.extend();
 
     View.prototype.template = cityTemplate;
-    View.prototype.className = "city-view ui-window";
+    View.prototype.className = "city-view";
 
     return View;
 
