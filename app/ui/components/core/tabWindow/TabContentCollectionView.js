@@ -2,6 +2,7 @@ define(function (require) {
     var Marionette = require("marionette");
     var TabContentView = require("./TabContentContainerView");
 
+    //TODO: container is redundant. Use CollectionView.getChildView.
     var CollectionView = Marionette.CollectionView.extend();
 
     CollectionView.prototype.initialize = function(){
@@ -18,8 +19,6 @@ define(function (require) {
             });
         }
     };
-
-
 
     return CollectionView;
 });

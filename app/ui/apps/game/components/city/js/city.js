@@ -23,8 +23,19 @@ define(function (require) {
             index: 1
         });
 
-        this.addTab("test1", new MapView()).active(true);
-        this.addTab("test2", new MapView());
+        var city = this.model;
+
+        this.addTab("test1", function () {
+            return new MapView({
+                model: city
+            });
+        }).active(true);
+
+        this.addTab("test2", function () {
+            return new MapView({
+                model: city
+            });
+        });
     };
 
     CityWindow.prototype.onShow = function () {
