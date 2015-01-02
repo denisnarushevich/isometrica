@@ -113,8 +113,8 @@ define(function (require) {
     City.prototype.toJSON = function () {
         var data = {
             name: this.name(),
-            population: this.populationService.getPopulation(),
-            maxPopulation: this.populationService.getCapacity(),
+            population: this.populationService.population(),
+            maxPopulation: this.populationService.capacity(),
             tile: this.tile(),
             resources: this.resources.getResources(),
             resourceProduce: this.statsService.getCityResourceProduce(),

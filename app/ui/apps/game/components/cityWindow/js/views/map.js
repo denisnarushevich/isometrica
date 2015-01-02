@@ -6,11 +6,18 @@ define(function (require) {
 
     var View = TabWindow.TabContentView.extend({
         className: "map-tab-content",
-        template: template
+        template: template,
+        modelEvents: {
+            "change": "render"
+        }
     });
 
-    View.prototype.onFocus = function(){
-        console.log(9999);
+    View.prototype.onFocus = function () {
+        console.log("focus", this);
+    };
+
+    View.prototype.onBlur = function () {
+        console.log("blur", this);
     };
 
     return View;

@@ -37,6 +37,8 @@ define(function (require) {
 
     CityBuildings.prototype.cityHall = null;
 
+    CityBuildings.prototype.changed = Events.event;
+
     var events = CityBuildings.prototype.events = {
         "new": 0,
         "remove": 1
@@ -66,6 +68,7 @@ define(function (require) {
                 this.cityHall = building;
 
             Events.fire(this, events.new, building);
+            this.changed(this, this);
         } else {
             root.messagingService.sendTileMessage(tile, Isometrica.Core.MessageType.tileError, errorCode);
         }
@@ -102,6 +105,8 @@ define(function (require) {
 
         for(var i in bs)
             Events.fire(this, events.new, bs[i]);
+
+        this.changed(this, this);
     };
 
     CityBuildings.prototype.destroyBuilding = function () {

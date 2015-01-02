@@ -14,5 +14,23 @@ define(function(require){
       }
     };
 
+    View.prototype.modelEvents = {
+        "change:active": function (model, active) {
+            this.toggleActive(active);
+        }
+    };
+
+    View.prototype.onBeforeRender = function () {
+        this.toggleActive(this.model.get('active'));
+    };
+
+    View.prototype.toggleActive = function (val) {
+        if (val) {
+            this.$el.addClass("active");
+        } else {
+            this.$el.removeClass("active");
+        }
+    };
+
     return View;
 });

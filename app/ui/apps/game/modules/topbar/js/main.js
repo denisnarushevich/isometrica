@@ -10,7 +10,7 @@ define(function (require) {
         var model = self._model;
         model.set("dt", s.toMDY());
         model.set("gold", self.city.resources.getResources()[ResourceCode.money]);
-        model.set("population", self.city.population.getPopulation());
+        model.set("population", self.city.population.population());
     }
 
     function onNameChange(city, args, self) {

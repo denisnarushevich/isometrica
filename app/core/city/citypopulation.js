@@ -9,13 +9,13 @@ define(function(require){
     var Resource = require("../resourcecode");
     var TileParamsMan = require("../world/tileparamsmanager");
 
+    var ReactiveProperty = require("reactive-property");
     var namespace = require("namespace");
     var CityService = namespace("Isometrica.Core.CityService");
     CityService.Population = CityPopulation;
 
     var MAX_PARAM_VAL = TileParamsMan.MAX_PARAM_VAL;
     var TAX_MONEY = 1;
-
 
     /**
      * @param city {City}
@@ -30,24 +30,37 @@ define(function(require){
         var world = this.city.world;
 
         Events.on(world, world.events.tick, onTick, this);
+
+        this.capacity(this.capacity());
+        this.city.buildings.changed(function (buildings, buildings, self) {
+            self.capacity(calculateCapacity(self));
+        }, this);
+
+        this.population(actualPopulation(this));
     };
 
-    CityPopulation.prototype.getCapacity = function(){
-        return calculateCapacity(this);
-    };
+    CityPopulation.prototype.population = ReactiveProperty(0);
 
-    CityPopulation.prototype.getPopulation = function(){
-        return Math.max(this._population | 0, 0);
-    };
+    CityPopulation.prototype.capacity = ReactiveProperty(0);
 
     CityPopulation.prototype.getTaxIncomeAmount = function(){
-        return TAX_MONEY * this.getPopulation();
+        return TAX_MONEY * this.population();
     };
 
     function onTick(world, args, self){
+        var pop = actualPopulation(self);
+
         populationChangePerTick(self);
 
+        if (pop !== actualPopulation(self)) {
+            self.population(actualPopulation(self));
+        }
+
         payTaxes(self);
+    }
+
+    function actualPopulation(self) {
+        return Math.max(self._population | 0, 0);
     }
 
     function calculateCapacity(self){
@@ -61,7 +74,7 @@ define(function(require){
     }
 
     function populationChangePerTick(self) {
-        var pop = self.getPopulation();
+        var pop = actualPopulation(self);
         var totalCap = calculateCapacity(self);
         var avgEco = self.city.tilesParams.avgEco();
         var change = 0;

@@ -9,12 +9,13 @@ define(function (require) {
     var View = Window.View.extend();
 
     View.prototype.template = template;
-    View.prototype.className = "ui-window ui-tab-window";
 
     View.prototype.initialize = function (opts) {
         this.model = new TabWindowModel();
 
         Window.View.prototype.initialize.apply(this, arguments);
+
+        this.$el.addClass("ui-tab-window");
     };
 
     View.prototype.regions = function (opts) {

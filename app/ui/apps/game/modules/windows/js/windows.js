@@ -2,7 +2,7 @@ define(function(require){
    var Marionette = require("marionette");
     var _ = require("underscore");
     var Prompt = require("ui/components/core/prompt/prompt");
-    var City = require("../../../components/city/js/city");
+    var City = require("../../../components/cityWindow/js/CityWindow");
 
     var Module = Marionette.Module.extend();
 
@@ -20,7 +20,7 @@ define(function(require){
 
     Module.prototype.showCity = function(cityId){
         var city = this.app.client.core.cities.getCity(cityId);
-        var cityWindow = new City(city);
+        var cityWindow = City.create(city);
 
         this.region.show(cityWindow);
     };

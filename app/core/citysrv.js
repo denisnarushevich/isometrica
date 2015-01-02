@@ -47,7 +47,7 @@ define(function (require) {
     CityService.prototype.init = function(){};
 
     CityService.prototype.establishCity = function(tile, name, mayor){
-        var city = City.establish(this.root, tile, name, mayor);
+        var city = City.establish(this.root, tile, name, mayor.name());
         if (city === null)
             return false;
         addCity(this, city);
