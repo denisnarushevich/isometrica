@@ -7,5 +7,9 @@ define(function(require){
         this.action();
     };
 
+    Model.prototype.action = function () {
+        console.log(123);
+    };
+
     return Model;
 });

@@ -16,23 +16,15 @@ define(function (require) {
 
         });
 
-        var buttons = this.model.buttons;
-
-        buttons.add({
-            icon: "cross",
-            text: "Cancel",
-            index: 0
+        this.addButton(0, "cross", "Cancel", function () {
+            console.log("Cancel");
         });
 
         var bodyRegion = this.bodyRegion;
 
-        buttons.add({
-            icon: "tick",
-            text: "Submit",
-            index: 1
-        }).action = function () {
+        this.addButton(1, "tick", "Submit", function () {
             cb(bodyRegion.currentView.value());
-        };
+        });
     };
 
     View.prototype.onShow = function () {

@@ -2,43 +2,50 @@ define(function (require) {
     var Backbone = require("backbone");
     var CityModel = require("../../../models/CityModel");
     var TabWindow = require("ui/components/core/tabWindow/TabWindow");
-    var MapView = require("./views/map");
-    var InfoView = require("./views/info");
+    var MapView = require("./views/map/CityMapLayoutView");
+    var InfoView = require("./views/info/CityInfoLayoutView");
 
     var CityWindow = TabWindow.View.extend();
 
     CityWindow.prototype.initialize = function (options) {
         TabWindow.View.prototype.initialize.apply(this, arguments);
 
+        var self = this;
+
         this.$el.addClass("city-window");
 
-        var buttons = this.model.buttons;
-
-        buttons.add({
-            icon: "cross",
-            text: "Cancel",
-            index: 0
+        this.addButton(0, "back", "Back", function () {
+            console.log("Back");
         });
 
-        buttons.add({
-            icon: "tick",
-            text: "Submit",
-            index: 1
+        this.addButton(1, "cross", "Close", function () {
+            console.log("Close");
+            self.windows().closeAll();
         });
+
 
         var city = options.cityModel;
 
+
         this.addTab("info", function () {
             return new InfoView({
-                model: city
+                cityModel: city,
+                window: self,
             });
         }).active(true);
 
         this.addTab("map", function () {
             return new MapView({
-                model: city
+                cityModel: city,
+                window: self
             });
         });
+    };
+
+    CityWindow.prototype.windows = function (windows) {
+        if (windows !== undefined)
+            this._windows = windows;
+        return this._windows;
     };
 
     CityWindow.create = function (city) {

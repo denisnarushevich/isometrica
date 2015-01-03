@@ -19,5 +19,13 @@ define(function (require) {
         }));
     };
 
+    View.prototype.addButton = function (index, icon, text, cb) {
+        this.model.buttons.add({
+            icon: icon,
+            text: text,
+            index: index
+        }).action = cb;
+    };
+
     return View;
 });

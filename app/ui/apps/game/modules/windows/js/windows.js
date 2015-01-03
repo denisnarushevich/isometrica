@@ -21,8 +21,13 @@ define(function(require){
     Module.prototype.showCity = function(cityId){
         var city = this.app.client.core.cities.getCity(cityId);
         var cityWindow = City.create(city);
+        cityWindow.windows(this);
 
         this.region.show(cityWindow);
+    };
+
+    Module.prototype.closeAll = function () {
+        this.region.empty();
     };
 
     Module.prototype.display = function(name){

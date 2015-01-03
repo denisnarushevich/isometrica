@@ -48,6 +48,11 @@ define(["./viewport", "./Canvas2dRenderer"], function (Viewport, Renderer) {
         return viewport;
     };
 
+    p.destroyViewport = function (viewport) {
+        var idx = this.viewports.indexOf(viewport);
+        this.viewports.splice(idx, 1);
+    };
+
     /**
      * @return {void}
      */

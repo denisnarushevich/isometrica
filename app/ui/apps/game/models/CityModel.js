@@ -11,7 +11,7 @@ define(function (require) {
 
     Model.createFromCity = function (city) {
         var model = new Model({
-            cityId: city.id(),
+            id: city.id(),
             mayor: city.mayor(),
             tile: city.tile(),
             population: city.population.population(),

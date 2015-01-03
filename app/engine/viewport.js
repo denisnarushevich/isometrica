@@ -31,9 +31,9 @@ define(function (require) {
 
         var viewport = this;
         window.addEventListener('resize', function(){
-            viewport.setSize(viewport.canvas.offsetWidth, viewport.canvas.offsetHeight);
+            viewport.updateSize();
         });
-        this.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight);
+        this.updateSize();
 
         this.canvas.addEventListener("mousedown", function(e){
             var viewportBoundingRect = e.target.getBoundingClientRect();
@@ -176,8 +176,8 @@ define(function (require) {
     p.context = null;
 
     p.start = function(){
-        this.setSize(this.canvas.offsetWidth, this.canvas.offsetHeight);
-    }
+        //  this.updateSize();
+    };
 
     /**
      * @param {int[]} size Vector2. Size of the viewport
@@ -226,6 +226,11 @@ define(function (require) {
         return this._active;
 
         this._active = !!val;
+    };
+
+    p.updateSize = function () {
+        var cnv = this.canvas;
+        this.setSize(cnv.offsetWidth, cnv.offsetHeight);
     };
 
     return Viewport;

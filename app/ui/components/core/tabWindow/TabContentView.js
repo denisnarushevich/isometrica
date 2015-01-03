@@ -1,7 +1,7 @@
 define(function(require){
    var Marionette = require("marionette");
 
-    var View = Marionette.ItemView.extend();
+ var View = Marionette.LayoutView.extend();
 
     View.prototype.onFocus = function(){
 
