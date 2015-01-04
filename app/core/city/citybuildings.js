@@ -9,6 +9,7 @@ define(function (require) {
     var Building = require("../building");
     var Terrain = require("../terrain");
     var TileIterator = require("../tileiterator");
+    var Resources = require("../resources");
 
     var namespace = require("namespace");
     var CityService = namespace("Isometrica.Core.CityService");
@@ -61,7 +62,7 @@ define(function (require) {
 
             root.buildings.build(building);
 
-            city.resources.sub(data.constructionCost);
+            city.resources.sub(Resources.create(data.constructionCost));
             this._buildings.push(building);
 
             if (code === BuildingCode.cityHall)
@@ -96,7 +97,7 @@ define(function (require) {
 
             root.buildings.build(building);
 
-            city.resources.sub(data.constructionCost);
+            city.resources.sub(Resources.create(data.constructionCost));
 
             this._buildings.push(building);
 
@@ -134,7 +135,7 @@ define(function (require) {
             return ErrorCode.CITY_HALL_ALREADY_BUILT;
         else if (!city.area.contains(tile, Terrain.convertToIndex(data.sizeX, data.sizeY)))
             return ErrorCode.CANT_BUILD_HERE;
-        else if (!city.resources.hasEnough(data.constructionCost))
+        else if (!city.resources.hasEnough(Resources.create(data.constructionCost)))
             return ErrorCode.NOT_ENOUGH_RES;
 
         return ErrorCode.NONE;

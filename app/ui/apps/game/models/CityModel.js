@@ -21,6 +21,8 @@ define(function (require) {
             city: city
         });
 
+        model.city = city;
+
         var mayorSub = city.mayor(city.mayor.CHANGE, function (sender, args, data) {
             model.set("mayor", args);
         });

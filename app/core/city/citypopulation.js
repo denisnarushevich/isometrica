@@ -6,8 +6,9 @@ define(function(require){
     /**
      * @type {TileParam}
      */
-    var Resource = require("../resourcecode");
+    var Resources = require("../resources");
     var TileParamsMan = require("../world/tileparamsmanager");
+    var Resource = Resources.ResourceCode;
 
     var ReactiveProperty = require("reactive-property");
     var namespace = require("namespace");
@@ -103,8 +104,9 @@ define(function(require){
 
     function payTaxes(self){
         var money = {};
-        money[Resource.money] = self.getTaxIncomeAmount();
-        self.city.resourcesModule.add(money);
+        var amount = self.getTaxIncomeAmount();
+        money[Resource.money] = amount;
+        self.city.resourcesModule.add(Resources.create(money));
     }
 
     return CityPopulation;

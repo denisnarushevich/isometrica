@@ -38,8 +38,8 @@ define(function (require) {
     function Building() {
         Construction.constructor(this);
 
-        this.producing = {};
-        this.demanding = {};
+        this.producing = Resources.create();
+        this.demanding = Resources.create();
     }
 
     Building.events = events;
@@ -182,7 +182,7 @@ define(function (require) {
         var city = self.getCity();
 
         if (self._state == BuildingState.ready && (data.requirement === undefined || data.requirement === GatherReq.none || checkFullfilRequirements(self))) {
-            Resources.add(self.producing, self.producing, data.producing);
+            Resources.add(self.producing, self.producing, Resources.create(data.producing)); //TODO: refactor resource create
             city.resources.add(self.producing);
         }
     }
@@ -194,7 +194,7 @@ define(function (require) {
         var city = self.getCity();
 
         if (self._state == BuildingState.ready) {
-            Resources.add(self.demanding, self.demanding, data.demanding);
+            Resources.add(self.demanding, self.demanding, Resources.create(data.demanding)); //TODO: refactor
             city.resources.sub(self.demanding);
         }
     }

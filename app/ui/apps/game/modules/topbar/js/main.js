@@ -5,11 +5,12 @@ define(function (require) {
     var Model = require("./Model");
     var Core = require("core/main");
     var ResourceCode = Core.ResourceCode;
+    var Numeral = require("numeral");
 
     function onAdvance(s,a, self){
         var model = self._model;
         model.set("dt", s.toMDY());
-        model.set("gold", self.city.resources.getResources()[ResourceCode.money]);
+        model.set("gold", Numeral(self.city.resources.getResources().get(ResourceCode.money)).format("0a"));
         model.set("population", self.city.population.population());
     }
 

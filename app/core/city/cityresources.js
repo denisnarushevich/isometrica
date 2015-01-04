@@ -15,11 +15,11 @@ define(function(require){
      */
     function CityResources(city){
         this.city = city;
-        this._resources = {
+        this._resources = Resources.create({
             money: 10000,
             stone: 100,
             wood: 100
-        };
+        });
     }
 
     /**
@@ -34,10 +34,16 @@ define(function(require){
     CityResources.prototype._resources = null;
 
     CityResources.prototype.add = function(resources){
+        if (!(resources instanceof Resources))
+            throw "error";
+
         Resources.add(this._resources, this._resources, resources);
     };
 
     CityResources.prototype.sub = function(resources){
+        if (!(resources instanceof Resources))
+            throw "error";
+
         Resources.sub(this._resources, this._resources, resources);
     };
 
@@ -58,7 +64,7 @@ define(function(require){
     };
 
     CityResources.prototype.hasEnoughResource = function(resource, amount){
-        return this._resources[resource] >= amount;
+        return this._resources.get(resources) >= amount;
     };
 
     CityResources.prototype.hasEnough = function(resReq){
@@ -70,7 +76,7 @@ define(function(require){
     };
 
     function hasEnoughCheck(key, value, self){
-        return self._resources[key] >= value;
+        return self._resources.get(key) >= value;
     }
 
     return CityResources;

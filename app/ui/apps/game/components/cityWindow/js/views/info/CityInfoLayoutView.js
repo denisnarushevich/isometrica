@@ -6,6 +6,7 @@ define(function (require) {
     var TabWindow = require("ui/components/core/tabWindow/TabWindow");
     var ViewportView = require("ui/apps/game/components/viewport/ViewportView");
     var CityInfoView = require("./CityInfoView");
+    var ResourceBarView = require("ui/apps/game/components/resourceBar/ResourceBarView");
 
     var View = TabWindow.TabContentView.extend({
         className: "info-tab-content",
@@ -13,7 +14,8 @@ define(function (require) {
 
         regions: {
             "info": ".info-container",
-            "viewport": ".bird-eye-container"
+            "viewport": ".bird-eye-container",
+            "availableResources": ".available-resources"
         }
     });
 
@@ -26,6 +28,7 @@ define(function (require) {
     View.prototype.onShow = function () {
         var infoRegion = this.getRegion("info");
         var viewportRegion = this.getRegion("viewport");
+        var availRes = this.getRegion("availableResources");
 
         infoRegion.show(new CityInfoView({
             model: this.options.cityModel
@@ -40,6 +43,11 @@ define(function (require) {
         viewportRegion.show(new ViewportView({
             camera: cam,
             client: client
+        }));
+
+
+        availRes.show(new ResourceBarView({
+            resources: this.options.cityModel.city.resources.getResources()
         }));
     };
 

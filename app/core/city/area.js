@@ -3,7 +3,8 @@
  */
 define(function (require) {
     var TileIterator = require("../tileiterator");
-    var Resource = require("../resourcecode");
+    var Resources = require("../resources");
+    var Resource = Resources.ResourceCode;
     var Terrain = require("../terrain");
 
     var namespace = require("namespace");
@@ -91,13 +92,14 @@ define(function (require) {
     function calculateAreaCost(self) {
         var area = self.getInfluenceArea();
         var n = area.length;
-        self.areaCost = n * AREA_TILE_COST_PER_TURN;
+        return self.areaCost = n * AREA_TILE_COST_PER_TURN;
     }
 
     function onTick(sender, args, self){
+        var cost = calculateAreaCost(self);
         var money = {};
-        money[Resource.money] = calculateAreaCost(self);
-        self._city.resourcesModule.sub(money);
+        money[Resource.money] = cost;
+        self._city.resourcesModule.sub(Resources.create(money));
     }
 
     return Area;
