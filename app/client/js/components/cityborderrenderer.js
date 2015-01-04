@@ -2,7 +2,7 @@
  * Created by User on 07.08.2014.
  */
 define(function (require) {
-    var Engine = require("engine/main");
+    var Engine = require("engine");
     var glMatrix = require("../vendor/gl-matrix");
     var Vec3 = glMatrix.vec3;
     var Core = require("core/main");

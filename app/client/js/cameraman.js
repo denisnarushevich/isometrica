@@ -1,5 +1,5 @@
 define(function(require){
-    var Engine = require("engine/main");
+    var Engine = require("engine");
     var CameraScript = require("./components/camerascript");
 
    function CameraMan(root){

@@ -1,5 +1,5 @@
 define(function (require) {
-    var engine = require("engine/main"),
+    var engine = require("engine"),
         Config = require("./config"),
         Events = require("events"),
         Tile = require("./gameObjects/tile"),

@@ -1,6 +1,6 @@
 define(function(require){
     var Config = require("../config");
-   var engine = require("engine/main");
+    var engine = require("engine");
 
     function Script(){
         engine.Component.call(this);

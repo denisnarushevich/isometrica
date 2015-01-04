@@ -4,7 +4,7 @@
 
 define(function (require) {
 //    var Core = require("core/main"),
-    var engine = require("engine/main"),
+    var engine = require("engine"),
         BuildMan = require("./buildman"),
         TilesMan = require("./tilesman"),
         HiliteMan = require("./hiliteman"),

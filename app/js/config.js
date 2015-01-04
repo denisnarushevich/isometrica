@@ -7,7 +7,6 @@ define(function (require) {
             ui: "ui",
             client: "client/js",
             core: "core",
-            engine: "engine",
             helpers: './vendor/helpers'
         },
         hbs: { // optional
@@ -33,7 +32,8 @@ define(function (require) {
                 "reactive-property": 'vendor/reactive-property',
                 "marionette" : "bower_components/backbone.marionette/lib/backbone.marionette",
                 text: 'bower_components/requirejs-text/text',
-                hbs: 'bower_components/require-handlebars-plugin/hbs'
+                hbs: 'bower_components/require-handlebars-plugin/hbs',
+                engine: "vendor/engine/main"
             }
         },
         shim: {

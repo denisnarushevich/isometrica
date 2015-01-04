@@ -1,7 +1,7 @@
 //TODO each building should be a building instance with attached prefab of building
 define(function (require) {
     var Core = require("core/main");
-    var engine = require("engine/main"),
+    var engine = require("engine"),
         BuildingClassCode = require("data/classcode"),
         Building = require("./building"),
         Road = require("./road"),

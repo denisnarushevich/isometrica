@@ -1,5 +1,5 @@
 define(function (require) {
-    var engine = require("engine/main"),
+    var engine = require("engine"),
         TrolleyScript = require("../components/entity"),
         SmokeSource = require("../components/smokesource"),
         RenderLayer = require("client/renderlayer");

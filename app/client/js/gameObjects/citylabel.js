@@ -1,5 +1,5 @@
 define(function (require) {
-    var engine = require("engine/main");
+    var engine = require("engine");
     var Bren = require("../components/cityborderrenderer");
     var City = require("../components/city");
 

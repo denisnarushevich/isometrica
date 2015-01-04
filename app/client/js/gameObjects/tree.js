@@ -2,7 +2,7 @@
  * Created by denis on 9/18/14.
  */
 define(function (require) {
-    var Engine = require("engine/main");
+    var Engine = require("engine");
     var GameObject = Engine.GameObject;
     var RenderLayer = require("../renderlayer");
     var SpriteRenderer = Engine.SpriteRenderer;

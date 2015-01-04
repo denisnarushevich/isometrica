@@ -1,4 +1,4 @@
-define(['engine/main'], function (engine) {
+define(['engine'], function (engine) {
     function EvaporatingTextScript(text, color) {
         this.text = text;
         this.color = color;

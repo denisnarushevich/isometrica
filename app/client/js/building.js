@@ -1,5 +1,5 @@
 define(function (require) {
-    var engine = require("engine/main"),
+    var engine = require("engine"),
         Core = require("core/main"),
         glMatrix = require("./vendor/gl-matrix"),
         buildingData = Core.BuildingData,

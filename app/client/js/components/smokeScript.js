@@ -1,4 +1,4 @@
-define(['engine/main'], function (engine) {
+define(['engine'], function (engine) {
     function SmokeScript() {
         engine.Component.call(this);
     }

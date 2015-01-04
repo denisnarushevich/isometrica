@@ -1,7 +1,7 @@
 define(function (require) {
     var BuildingNode = require("./buildingnode"),
         Node = require("./node"),
-        engine = require("engine/main");
+        engine = require("engine");
 
     function RoadNode(road) {
         BuildingNode.call(this, road);

@@ -1,5 +1,5 @@
 define(function (require) {
-    var engine = require("engine/main");
+    var engine = require("engine");
 
     function Waypoint(){
         this.x = 0;

@@ -3,7 +3,7 @@
  */
 define(function (require) {
     var Config = require("./config");
-    var Engine = require("engine/main");
+    var Engine = require("engine");
     var Events = require("events");
     var Terrain = require("./terrain");
     var Core = require("core/main");

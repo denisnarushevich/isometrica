@@ -5,10 +5,26 @@ var Events = require("../vendor/events/events");
 var OLD = {};
 var CHANGE = {};
 
-function Accessor(host, key, defaultValue, validator){
-    var prop = new ReactiveProperty(host, defaultValue, validator);
+    function determineKey(host, accessor) {
+        for (var key in host) {
+            if (host[key] === accessor)
+                return key;
+        }
+        throw "Couldn't determine name of reactive property";
+    }
 
-    function accessor(a, b, c, d) {
+    function accessor(defaultValue, validator) {
+        var name = undefined;
+
+        function f(a, b, c, d) {
+            if (name === undefined)
+                name = accessor.prefix + determineKey(this, f);
+
+            var prop = this[name];
+
+            if (prop === undefined)
+                prop = this[name] = new ReactiveProperty(this, defaultValue, validator);
+
         if (arguments.length === 0) {
             return prop.get();
         } else if (a === CHANGE) {
@@ -24,35 +40,15 @@ function Accessor(host, key, defaultValue, validator){
         }
     }
 
-    accessor.OLD = OLD;
-    accessor.CHANGE = CHANGE;
+        f.OLD = OLD;
+        f.CHANGE = CHANGE;
 
-    return accessor;
+        return f;
 }
 
-function determineKey(host, accessor) {
-    for (var key in host) {
-        if (host[key] === accessor)
-            return key;
-    }
-}
+    accessor.prefix = "__";
 
-module.exports = function (defaultValue, validator) {
-    function definitor() {
-        var host = this;
-        var key = determineKey(host, definitor);
-        var accessor = Accessor(host, key, defaultValue, validator);
-
-        host[key] = accessor;
-
-        return accessor.apply(host, arguments);
-    }
-
-    definitor.OLD = OLD;
-    definitor.CHANGE = CHANGE;
-
-    return definitor;
-};
+    module.exports = accessor;
 },{"../vendor/events/events":4,"./r":2}],2:[function(require,module,exports){
 var Events = require("../vendor/events/events");
 
@@ -317,31 +313,23 @@ function determineName(host, callable){
             return key;
 }
 
-function Accessor(host, name){
-    return function(a, b) {
+    function accessor(name) {
+        function f(a, b) {
+            if (name === undefined)
+                name = determineName(this, f);
+
         if (a === undefined && b === undefined) {
-            return event(host, name);
+            return event(this, name);
         } else if (a instanceof Subscription) {
-            return off(host, name, a);
+            return off(this, name, a);
         } else if (typeof a === "function") {
-            return on(host, name, a, b);
+            return on(this, name, a, b);
         } else {
-            return _fire(host, name, a, b);
+            return _fire(this, name, a, b);
         }
-    };
-}
-
-function eventAccessor() {
-    function ev(a,b) {
-        var name = determineName(this, ev);
-        var host = this;
-        var accessor = Accessor(host, name);
-
-        host[name] = accessor;
-
-        return accessor(a,b);
     }
-    return ev;
+
+        return f
 }
 
 function Events(){
@@ -349,7 +337,7 @@ function Events(){
     this.once = once;
     this.off = off;
     this.fire = fire;
-    this.event = eventAccessor;
+    this.event = accessor;
     this.Event = Event;
     this.Subscription = Subscription;
 }

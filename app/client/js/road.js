@@ -1,6 +1,6 @@
 define(function (require) {
     var Core = require("core/main");
-    var engine = require("engine/main"),
+    var engine = require("engine"),
         Building = require("./building"),
         buildingData = Core.BuildingData,
         BuildingData = buildingData,

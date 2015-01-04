@@ -1,5 +1,5 @@
 define(function (require) {
-    var engine = require("engine/main"),
+    var engine = require("engine"),
         RenderLayer = require("./renderlayer");
     var WorldCamera = require("./components/camerascript");
     var Events = require("events");

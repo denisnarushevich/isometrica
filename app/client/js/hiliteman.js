@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 define(function (require) {
-    var engine = require("engine/main"),
+    var engine = require("engine"),
         TileHiliteScript = require("./components/tilehilitescript"),
         TileHiliteRenderer = require("./components/tilehiliterenderer"),
         RenderLayer = require("client/renderlayer"),

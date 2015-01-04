@@ -1,4 +1,4 @@
-define(["engine/main"], function (engine) {
+define(["engine"], function (engine) {
 
     function Building() {
         engine.GameObject.call(this);
