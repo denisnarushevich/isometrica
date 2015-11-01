@@ -23,7 +23,7 @@ module.exports = {
                 loader: 'style!css!less'
             },
             {
-                test: /\.png$/,
+                test: /\.png$|\.ttf$/,
                 loader: 'url-loader'
             }
         ]

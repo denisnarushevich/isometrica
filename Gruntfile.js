@@ -1,7 +1,5 @@
 module.exports = function (grunt) {
-    grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-template');
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -12,61 +10,6 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         optimize: "none",//"uglify2",
-        requirejs: {
-            main: {
-                options: {
-                    optimize: "<%= optimize %>",
-                    baseUrl: "./app/js",
-                    name: "main",
-                    out: "dist/js/main.js",
-                    mainConfigFile: 'app/js/config.js',
-                    map: {
-                        "*": {
-                            //"config":"config2.js"
-                        }
-                    },
-                    preserveLicenseComments: false
-                }
-            },
-            ui: {
-                options: {
-                    optimize: "<%= optimize %>",
-                    baseUrl: "./app",
-                    name: "ui/js/main",
-                    out: "./dist/ui/js/main.js",
-                    mainConfigFile: 'app/js/config.js',
-                    preserveLicenseComments: false
-                }
-            },
-            game: {
-                options: {
-                    optimize: "<%= optimize %>",
-                    baseUrl: "./app",
-                    name: "client/main",
-                    out: "./dist/client/js/main.js",
-                    mainConfigFile: 'app/js/config.js',
-                    preserveLicenseComments: false
-                }
-            }
-        },
-        less: {
-            dev: {
-                files: {
-                    "./app/ui/css/main.css": "./app/ui/less/main.less"
-                }
-            },
-            dist: {
-                options: {
-                    cleancss: true,
-                    compress: true,
-                    yuicompress: true,
-                    optimization: 2
-                },
-                files: {
-                    "./dist/ui/css/main.css": "./app/ui/less/main.less"
-                }
-            }
-        },
         sprite: {
             dev: {
                 src: './app/client/assets/images/**/*.png',
@@ -235,13 +178,6 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            less: {
-                files: ['app/ui/**/*.less'], // which files to watch
-                tasks: ['less:dev'],
-                options: {
-                    nospawn: true
-                }
-            },
             sprites: {
                 files: "app/client/assets/images/**/*",
                 tasks: "sprite:dev",

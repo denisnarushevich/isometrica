@@ -1,12 +1,13 @@
 require('./less/main.less');
-var main = require("./main/js/main");
+
+var Intro = require('./intro/intro');
 var Marionette = require("marionette");
+
+var scope = Object.create(null);
 
 var app = new Marionette.Application();
 
-//app.router = new Marionette.AppRouter({
-//    controller: {}
-//});
+scope.app = app;
 
 app.view = new Marionette.LayoutView({
     el: 'body'
@@ -16,9 +17,8 @@ app.view.addRegions({
     uiRegion: ".game-ui"
 });
 
-main.main(app);
-
 app.on('start', function () {
+    new Intro(scope);
     Backbone.history.start();
 });
 
