@@ -1,13 +1,14 @@
-define(function(require){
-    var Marionette = require("marionette");
-    var template = require("./splash.hbs");
-    require('./splash.less');
+'use strict';
 
-    var View = Marionette.ItemView.extend();
+var Marionette = require("marionette");
+var template = require("./splash.hbs");
+require('./splash.less');
 
-    View.prototype.template = template;
+class SplashView extends Marionette.ItemView {
+    conctructor() {}
+}
 
-    View.prototype.className = "is-splash";
+SplashView.prototype.template = template;
+SplashView.prototype.className = "is-splash";
 
-    return View;
-});
+module.exports = SplashView;

@@ -1,27 +1,15 @@
-require('./less/main.less');
+'use strict';
 
+var Scope = require('src/common/Scope');
+var Application = require('./Application');
 var Intro = require('./intro/intro');
-var Marionette = require("marionette");
+var Game = require('./game/game');
 
-var scope = Object.create(null);
+var scope = Scope.spawn();
 
-var app = new Marionette.Application();
+scope.app = Scope.inject(scope, Application);
 
-scope.app = app;
+Scope.inject(scope, Intro);
+Scope.inject(scope, Game);
 
-app.view = new Marionette.LayoutView({
-    el: 'body'
-});
-
-app.view.addRegions({
-    uiRegion: ".game-ui"
-});
-
-app.on('start', function () {
-    new Intro(scope);
-    Backbone.history.start();
-});
-
-app.start();
-
-module.exports = app;
+scope.app.start();
