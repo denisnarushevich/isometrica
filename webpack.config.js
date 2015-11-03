@@ -29,7 +29,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
-                loader: 'babel' // 'babel-loader' is also a legal name to reference
+                loader: 'babel', // 'babel-loader' is also a legal name to reference
+                query: {
+                    presets: ['es2015']
+                }
             }
 
         ]
@@ -37,6 +40,7 @@ module.exports = {
     resolve: {
         modulesDirectories: ['./node_modules'],
         alias: {
+            src: __dirname + '/app/src',
             data: __dirname + '/app/src/data',
             ui: __dirname + '/app/src/web-ui',
             'web-ui': __dirname + '/app/src/web-ui',
