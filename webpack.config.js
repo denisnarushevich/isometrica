@@ -25,7 +25,13 @@ module.exports = {
             {
                 test: /\.png$|\.ttf$/,
                 loader: 'url-loader'
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                loader: 'babel' // 'babel-loader' is also a legal name to reference
             }
+
         ]
     },
     resolve: {
