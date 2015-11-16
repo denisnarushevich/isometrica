@@ -3,6 +3,8 @@
 var Marionette = require('marionette');
 var LayoutView = require('./layout');
 
+var Vkaria = require('client/main');
+
 class Game {
     constructor() {
         new Marionette.AppRouter({

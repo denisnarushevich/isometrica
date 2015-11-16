@@ -33,7 +33,7 @@ define(function(require){
         Events.on(world, world.events.tick, onTick, this);
 
         this.capacity(this.capacity());
-        this.city.buildings.changed(function (buildings, buildings, self) {
+        this.city.buildings.changed(function (a, b, self) {
             self.capacity(calculateCapacity(self));
         }, this);
 

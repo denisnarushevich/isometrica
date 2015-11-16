@@ -42,6 +42,7 @@ module.exports = {
         alias: {
             src: __dirname + '/app/src',
             data: __dirname + '/app/src/data',
+            vendor: __dirname + '/app/vendor',
             ui: __dirname + '/app/src/web-ui',
             'web-ui': __dirname + '/app/src/web-ui',
             client: __dirname + '/app/src/client/js',

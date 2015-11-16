@@ -2,7 +2,7 @@
 
 var Scope = require('src/common/Scope');
 var Application = require('./Application');
-var Intro = require('./intro/intro');
+var Intro = require('./intro/IntroModule');
 var Game = require('./game/game');
 
 var scope = Scope.spawn();
