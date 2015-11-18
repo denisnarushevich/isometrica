@@ -1,0 +1,18 @@
+
+    .sprite-position(@sprite) {
+    @offset-y: ~`parseInt("@{sprite}".split(', ')[1],10)`;
+    @height: ~`parseInt("@{sprite}".split(', ')[5],10)`;
+    @total-height: ~`parseInt("@{sprite}".split(', ')[7],10)`;
+    @y: @offset-y / ( @total-height - @height ) * 100;
+    background-position: 0  0%+@y;
+    }
+
+    .sprite-image(@sprite) {
+    @sprite-image: ~`"@{sprite}".split(', ')[8].slice(1, -2)`;
+    background-image: url(@sprite-image);
+    }
+
+    .sprite(@sprite) {
+    .sprite-image(@sprite);
+    .sprite-position(@sprite);
+    }
