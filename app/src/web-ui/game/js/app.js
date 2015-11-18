@@ -2,7 +2,7 @@ define(function (require) {
     var Marionette = require("marionette");
     var Windows = require("../modules/windows/js/windows");
     var Viewport = require("../modules/mainviewport/js/module");
-    var LayoutView = require("./../layout");
+    var LayoutView = require("./../layout/layout");
     var TopBar = require("../modules/topbar/js/main");
     var API = require("./api");
 

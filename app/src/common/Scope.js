@@ -15,6 +15,10 @@ class Scope {
     static spawn(parentScope = null){
         return Object.create(parentScope);
     }
+
+    static register(scope, key, value){
+        scope[key] = value;
+    }
 }
 
 module.exports = Scope;

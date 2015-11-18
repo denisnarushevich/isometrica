@@ -169,7 +169,6 @@ module.exports = function (grunt) {
         copy: {
             dist: {
                 files: [
-                    {expand: true, cwd: './app/bower_components/requirejs', src: ['require.js'], dest: './dist/js'},
                     {expand: true, cwd: './app/ui/fonts', src: ['**'], dest: './dist/ui/fonts'},
                     {expand: true, cwd: './app/ui/css/img', src: ['**'], dest: './dist/ui/css/img'},
                     {expand: true, cwd: './app/ui/img', src: ['**'], dest: './dist/ui/img'},
@@ -197,7 +196,7 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('build', ["clean:dist", 'requirejs', "template:dist", "sprite:dist", "less:dist", "uglify:dist","copy", "imagemin:dist"]);
+    grunt.registerTask('build', ["clean:dist", "template:dist", "sprite:dist", "uglify:dist","copy", "imagemin:dist"]);
     grunt.registerTask("icons", ["clean:tmp", "gm:icons", "sprite:css-icons", ]);
 
 };
