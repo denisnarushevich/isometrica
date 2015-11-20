@@ -3,6 +3,8 @@ define(function (require) {
     var underscore = require("underscore"),
         BuildingClassCode = require("data/classcode");
 
+    var _ = underscore;
+
     function Pathman() {
         this.nodes = [];
         this.lastNodeId = 0;

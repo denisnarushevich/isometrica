@@ -20,8 +20,6 @@ define(function(require){
     require("./components/cameracomponent");
     require("./components/transformcomponent");
     require("./components/spriterenderer");
-    require("./lib/assetmanager/assetmanager");
-    require("./spritemanager");
     require("./components/textrenderer");
     require("./components/animatedspriterenderer");
     require("./components/renderer");

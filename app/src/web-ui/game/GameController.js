@@ -5,18 +5,21 @@ var Client = require('client/main');
 var Core = require('core/main');
 
 class GameController {
-    init(){
+    init() {
         var layout = new LayoutView();
 
         this.scope.app.render(layout);
 
         var core = Scope.inject(this.scope, Core.Logic);
         var client = Scope.inject(this.scope, Client.Vkaria, core, {
-            showHint: function(){},
-            showButtons: function(){
+            showHint: function () {
+            },
+            showButtons: function () {
                 return {
-                    onSubmit: function(){},
-                    canDiscard: function(){}
+                    onSubmit: function () {
+                    },
+                    canDiscard: function () {
+                    }
                 }
             },
 
@@ -25,16 +28,15 @@ class GameController {
         Scope.register(this.scope, 'client', client);
         Scope.register(this.scope, 'core', core);
 
-        client.prepare(()=>{
-            core.start();
-            client.start();
-            //callback(client);
-            client.startServices();
 
-            layout.bodyRegion.show(Scope.inject(this.scope, ViewportView, {
-                camera: client.camera
-            }));
-        });
+        core.start();
+        client.start();
+        //callback(client);
+        client.startServices();
+
+        layout.bodyRegion.show(Scope.inject(this.scope, ViewportView, {
+            camera: client.camera
+        }));
     }
 }
 

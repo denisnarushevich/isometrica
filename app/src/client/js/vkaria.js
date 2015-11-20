@@ -46,10 +46,6 @@ define(function (require) {
         engine.Config.noLayerDepthSortingMask = 3;
         engine.Config.noLayerClearMask = 0;
 
-        //assets
-        this.assets = new engine.AssetManager();
-        this.sprites = new engine.SpriteManager(this.assets);
-
         //init engine
         this.game = new engine.Game();
 
@@ -68,29 +64,6 @@ define(function (require) {
         this.player = new Player(this);
     }
 
-    Vkaria.prototype.prepare = function(callback){
-        //preload assets and, when done, start game
-        var self = this;
-
-        //todo: use promises
-        //прелоадинг ресурсов не нужен, т.к. идея прелоадинга идёт в разрез с идеей того, чтобы загружать ресурсы по мере необходимисти, а не все сразу.
-        //Try to load spritesheet. If it is not available, then start game anyway, it will then use sprites each separately.
-        //FF won't run game before any resource is ready. Empty "new Image()" shim is not helpful.
-        this.assets.getAsset("gfx/spritesheet.json", engine.AssetManager.Resource.ResourceTypeEnum.json).done(function (resourceJSON) {
-            if (resourceJSON.state === resourceJSON.constructor.ResourceStateEnum.ready) {
-                self.sprites.frames = resourceJSON.data.frames;
-
-                self.assets.getAsset("gfx/spritesheet.png", engine.AssetManager.Resource.ResourceTypeEnum.image).done(function (resourceImage) {
-                    self.sprites.atlas = resourceImage.data;
-                    //self.start();
-                    callback && callback();
-                });
-            } else {
-                //self.start();
-                callback && callback();
-            }
-        });
-    };
 
     Vkaria.prototype.start = function () {
         this.camera = new engine.Camera("mainCamera");
@@ -112,17 +85,17 @@ define(function (require) {
         this.cameraControl.init();
 
 
-        window.t = require("./gameObjects/Trolley");
-        var p = this.pathman;
-        setInterval(function () {
-            var pa = p.findPath();
-            if (pa && pa.length) {
-                var b = new t;
-                vkaria.game.logic.world.addGameObject(b);
-                b.transform.setPosition(pa[0][0], pa[0][1], pa[0][2]);
-                b.entity.setPath(pa);
-            }
-        }, 1000);
+        //window.t = require("./gameObjects/Trolley");
+        //var p = this.pathman;
+        //setInterval(function () {
+        //    var pa = p.findPath();
+        //    if (pa && pa.length) {
+        //        var b = new t;
+        //        vkaria.game.logic.world.addGameObject(b);
+        //        b.transform.setPosition(pa[0][0], pa[0][1], pa[0][2]);
+        //        b.entity.setPath(pa);
+        //    }
+        //}, 1000);
     };
 
     /**

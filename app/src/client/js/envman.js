@@ -13,13 +13,15 @@ define(function (require) {
     var Chunkman = require("./chunkman");
     var Pool = require("object-pool");
     var Tree = require("./gameObjects/tree");
+    var Resources = require('../assets/Resources.js');
+    var trees = require('../assets/images/trees/trees');
 
     function plantTree(self, tile, treeCode) {
         var go = Pool.borrowObject(self.pool);
 
         var spriteData = BuildingData[treeCode].sprites[0];
         var renderer = go.renderer;
-        renderer.setSprite(self.root.sprites.getSprite(spriteData.path));
+        renderer.setSprite(Resources.getSprite(trees[spriteData.path]));
         renderer.pivotX = spriteData.pivotX;
         renderer.pivotY = spriteData.pivotY;
 

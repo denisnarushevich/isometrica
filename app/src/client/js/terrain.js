@@ -9,54 +9,10 @@ define(function (require) {
     var TileIterator = Core.TileIterator;
     var Events = require("events");
     var CoreTerrain = Core.Terrain;
-
-    var grass = {
-        2222: 'grass/2222.png',
-        2111: 'grass/2111.png',
-        2223: 'grass/2223.png',
-        2112: 'grass/2112.png',
-        2232: 'grass/2232.png',
-        2121: 'grass/2121.png',
-        2233: 'grass/2233.png',
-        2122: 'grass/2122.png',
-        2322: 'grass/2322.png',
-        2211: 'grass/2211.png',
-        2323: 'grass/2323.png',
-        2212: 'grass/2212.png',
-        2332: 'grass/2332.png',
-        2221: 'grass/2221.png',
-        2333: 'grass/2333.png',
-        2321: 'grass/2321.png',
-        2123: 'grass/2123.png',
-        2101: 'grass/2101.png',
-        2343: 'grass/2343.png'
-    };
-
-    var shore = {
-        2222: 'shore/2222.png',
-        2111: 'shore/2111.png',
-        2223: 'shore/2223.png',
-        2112: 'shore/2112.png',
-        2232: 'shore/2232.png',
-        2121: 'shore/2121.png',
-        2233: 'shore/2233.png',
-        2122: 'shore/2122.png',
-        2322: 'shore/2322.png',
-        2211: 'shore/2211.png',
-        2323: 'shore/2323.png',
-        2212: 'shore/2212.png',
-        2332: 'shore/2332.png',
-        2221: 'shore/2221.png',
-        2333: 'shore/2333.png',
-        2321: 'shore/2321.png',
-        2123: 'shore/2123.png',
-        2101: 'shore/2101.png',
-        2343: 'shore/2343.png'
-    };
-
-    var water = {
-        2222: "water/2222.png"
-    };
+    var grass = require('../assets/images/grass/grass');
+    var shore = require('../assets/images/shore/shore');
+    var water = require('../assets/images/water/water');
+    var Resources = require('../assets/Resources.js');
 
     var events = {};
 
@@ -77,7 +33,7 @@ define(function (require) {
 
     Terrain.events = events;
 
-    Terrain.prototype.init = function(){
+    Terrain.prototype.init = function () {
     };
 
     Terrain.prototype.clear = function (x0, y0, w, l) {
@@ -86,9 +42,9 @@ define(function (require) {
         var iter = new TileIterator(tile0, tile1);
         var tile, index, tiles = this.tiles, pool = this.pool, gos = this.gos,
             world = vkaria.game.logic.world;
-        while(true){
+        while (true) {
             index = iter.next();
-            if(index === -1)
+            if (index === -1)
                 break;
 
             tile = this.tiles[index];
@@ -122,7 +78,7 @@ define(function (require) {
         return 2000 + (z1 - z0 + 2) * 100 + (z2 - z0 + 2) * 10 + (z3 - z0 + 2);
     }
 
-    var routine = function (iter,self) {
+    var routine = function (iter, self) {
         var i = 0;
         while (i++ < 128) {
 
@@ -160,17 +116,18 @@ define(function (require) {
                     z = gps[2]; //2 is west, most left gridpoint, it should be gps[0], but sprites are drawn with pivot point being most left gridpoint
 
                 t.transform.setPosition(
-                        x * Config.tileSize,
-                        z * Config.tileZStep,
-                        y * Config.tileSize
+                    x * Config.tileSize,
+                    z * Config.tileZStep,
+                    y * Config.tileSize
                 );
 
-                if (type === TerrainType.grass)
-                    sprite = vkaria.sprites.getSprite(grass[slope.toString()]);
-                else if (type === TerrainType.shore)
-                    sprite = vkaria.sprites.getSprite(shore[slope.toString()]);
-                else
-                    sprite = vkaria.sprites.getSprite(water["2222"]);
+                if (type === TerrainType.grass) {
+                    sprite = Resources.getSprite(grass[slope]);
+                } else if (type === TerrainType.shore) {
+                    sprite = Resources.getSprite(shore[slope]);
+                } else {
+                    sprite = Resources.getSprite(water['sea']);
+                }
 
                 t.renderer.setSprite(sprite);
                 vkaria.game.logic.world.addGameObject(t);
@@ -226,17 +183,18 @@ define(function (require) {
                     z = gps[2]; //2 is west, most left gridpoint, it should be gps[0], but sprites are drawn with pivot point being most left gridpoint
 
                 t.transform.setPosition(
-                        x * Config.tileSize,
-                        z * Config.tileZStep,
-                        y * Config.tileSize
+                    x * Config.tileSize,
+                    z * Config.tileZStep,
+                    y * Config.tileSize
                 );
 
-                if (type === TerrainType.grass)
-                    sprite = vkaria.sprites.getSprite(grass[slope]);
-                else if (type === TerrainType.shore)
-                    sprite = vkaria.sprites.getSprite(shore[slope]);
-                else
-                    sprite = vkaria.sprites.getSprite(water[2222]);
+                if (type === TerrainType.grass) {
+                    sprite = Resources.getSprite(grass[slope]);
+                } else if (type === TerrainType.shore) {
+                    sprite = Resources.getSprite(shore[slope]);
+                } else {
+                    sprite = Resources.getSprite(water['sea']);
+                }
 
                 t.renderer.setSprite(sprite);
                 vkaria.game.logic.world.addGameObject(t);
@@ -250,9 +208,9 @@ define(function (require) {
     Terrain.prototype.getTile = function (idx_or_x, y) {
         var idx;
 
-        if(arguments.length === 2){
-            idx = Core.Terrain.convertToIndex(idx_or_x,y);
-        }else{
+        if (arguments.length === 2) {
+            idx = Core.Terrain.convertToIndex(idx_or_x, y);
+        } else {
             idx = idx_or_x;
         }
 
@@ -268,15 +226,15 @@ define(function (require) {
         return this.gos[go.instanceId] || -1;
     };
 
-    Terrain.prototype.tileXPos = function(tile){
+    Terrain.prototype.tileXPos = function (tile) {
         return CoreTerrain.extractX(tile) * Config.tileSize;
     };
 
-    Terrain.prototype.tileZPos = function(tile){
+    Terrain.prototype.tileZPos = function (tile) {
         return CoreTerrain.extractY(tile) * Config.tileSize;
     };
 
-    Terrain.prototype.tileYPos = function(tile){
+    Terrain.prototype.tileYPos = function (tile) {
         return this.root.core.terrain.getGridPointHeight(tile) * Config.tileZStep;
     };
 

@@ -1,0 +1,21 @@
+module.exports = {
+    90001: require("./straight1.png"),
+    90010: require("./straight2.png"),
+    90011: require("./turn3.png"),
+    90100: require("./straight1.png"),
+    90101: require("./straight1.png"),
+    90110: require("./turn2.png"),
+    90111: require("./t2.png"),
+    91000: require("./straight2.png"),
+    91001: require("./turn1.png"),
+    91010: require("./straight2.png"),
+    91011: require("./t3.png"),
+    91100: require("./turn4.png"),
+    91101: require("./t4.png"),
+    91110: require("./t1.png"),
+    91111: require("./x1.png"),
+    1: require("./elevation1.png"),
+    2: require("./elevation2.png"),
+    3: require("./elevation3.png"),
+    4: require("./elevation4.png")
+};
