@@ -6,8 +6,8 @@ var GameController = require('./GameController');
 
 class GameModule {
     constructor() {
-        Scope.inject(this.scope, GameRouter, {
-            controller: Scope.inject(this.scope, GameController)
+        Scope.create(this, GameRouter, {
+            controller: Scope.create(this, GameController)
         });
     }
 }

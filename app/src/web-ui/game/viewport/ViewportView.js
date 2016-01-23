@@ -1,4 +1,5 @@
 require('./ViewportView.less');
+var Scope = require('src/common/Scope');
 var Marionette = require('marionette');
 
 class ViewportView extends Marionette.ItemView {
@@ -6,7 +7,7 @@ class ViewportView extends Marionette.ItemView {
         super(opts);
 
         this._camera = opts.camera || null;
-        this._viewport = this.scope.client.game.graphics.createViewport(this.el);
+        this._viewport = Scope.inject(this, 'client').game.graphics.createViewport(this.el);
         this._viewport.setCamera(this._camera);
     }
 }
@@ -22,7 +23,7 @@ ViewportView.prototype.onShow = function () {
 };
 
 ViewportView.prototype.onDestroy = function () {
-    this.scope.client.game.graphics.destroyViewport(this._viewport);
+    Scope.inject(this, 'client').game.graphics.destroyViewport(this._viewport);
     this._viewport = null;
 };
 

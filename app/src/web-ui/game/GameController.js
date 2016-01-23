@@ -8,10 +8,10 @@ class GameController {
     init() {
         var layout = new LayoutView();
 
-        this.scope.app.render(layout);
+        Scope.inject(this, 'app').render(layout);
 
-        var core = Scope.inject(this.scope, Core.Logic);
-        var client = Scope.inject(this.scope, Client.Vkaria, core, {
+        var core = Scope.create(this, Core.Logic);
+        var client = Scope.create(this, Client.Vkaria, core, {
             showHint: function () {
             },
             showButtons: function () {
@@ -25,8 +25,8 @@ class GameController {
 
         });
 
-        Scope.register(this.scope, 'client', client);
-        Scope.register(this.scope, 'core', core);
+        Scope.register(this, 'client', client);
+        Scope.register(this, 'core', core);
 
 
         core.start();
@@ -34,7 +34,7 @@ class GameController {
         //callback(client);
         client.startServices();
 
-        layout.bodyRegion.show(Scope.inject(this.scope, ViewportView, {
+        layout.bodyRegion.show(Scope.create(this, ViewportView, {
             camera: client.camera
         }));
     }

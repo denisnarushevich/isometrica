@@ -4,8 +4,8 @@ var IntroController = require('./IntroController');
 
 class IntroModule {
     constructor(){
-        this.router = Scope.inject(this.scope, IntroRouter, {
-            controller: Scope.inject(this.scope, IntroController)
+        this.router = Scope.create(this, IntroRouter, {
+            controller: Scope.create(this, IntroController)
         });
     }
 }

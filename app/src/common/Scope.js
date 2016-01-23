@@ -1,23 +1,25 @@
 'use strict';
 
+var scopeKey = '___scope___';
+
 class Scope {
-    static inject(scope, ctor, ...params){
-        var F = function(){};
-        F.prototype = ctor.prototype;
-        var f = new F();
-        f.scope = Scope.spawn(scope);
-        f.constructor = ctor;
-        ctor.apply(f, params);
-
-        return f;
+    static create(host, ctor, ...params){
+        var instance = Object.create(ctor.prototype);
+        instance[scopeKey] = Object.create(host[scopeKey] || null);
+        ctor.apply(instance, params);
+        return instance;
     }
 
-    static spawn(parentScope = null){
-        return Object.create(parentScope);
+    static register(host, key, value){
+        if(host[scopeKey] === undefined){
+            host[scopeKey] = Object.create(null);
+        }
+        host[scopeKey][key] = value;
     }
 
-    static register(scope, key, value){
-        scope[key] = value;
+    static inject(host, key){
+        var scope = host[scopeKey];
+        return scope && scope[key];
     }
 }
 
