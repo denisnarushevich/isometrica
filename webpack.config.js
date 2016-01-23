@@ -33,8 +33,11 @@ module.exports = {
                 query: {
                     presets: ['es2015']
                 }
+            },
+            {
+                test: /\.ts$/,
+                loader: 'ts-loader'
             }
-
         ]
     },
     resolve: {
