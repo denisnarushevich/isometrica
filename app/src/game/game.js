@@ -11,7 +11,6 @@ class Game {
         Scope.register(this, 'app', this.ui);
         Scope.create(this, Intro);
         Scope.create(this, GameModule);
-        debugger;
     }
 
     start(){
