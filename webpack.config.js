@@ -1,6 +1,6 @@
 module.exports = {
     context: __dirname + '/app',
-    entry: './main',
+    entry: './src/web-ui/main',
     devtool: 'source-map',
     output: {
         path: './app/dist',
@@ -40,7 +40,7 @@ module.exports = {
             },
             //bootstrap specifics
             { test: /\.(woff|woff2)$/,  loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-            { test: /\.ttf$/,    loader: "file-loader" },
+            //{ test: /\.ttf$/,    loader: "file-loader" },
             { test: /\.eot$/,    loader: "file-loader" },
             { test: /\.svg$/,    loader: "file-loader" },
             { test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery' }
@@ -58,7 +58,7 @@ module.exports = {
             core: __dirname + '/app/src/core',
             helpers: './vendor/helpers',
             "simplex-noise": __dirname + '/app/vendor/simplex-noise',
-            events: __dirname + '/app/src/events-wrapper',
+            events: __dirname + '/app/src/common/events-wrapper',
             "object-pool": __dirname + '/app/vendor/object-pool',
             enumeration: __dirname + '/app/vendor/enumeration',
             binaryheap: __dirname + '/app/vendor/binaryheap',

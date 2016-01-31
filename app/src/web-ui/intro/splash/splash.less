@@ -1,13 +1,17 @@
-@import '../../less/fonts.less';
-@import '../../less/mixins.less';
+@import '../../common/less/fonts.less';
+@import '../../common/less/mixins.less';
 
-.is-splash {
-  height: 100%;
-  width: 100%;
-  &:extend(.middle-position all);
-  text-align: center;
+.splash {
+  &-root {
+    height: 100%;
+    width: 100%;
+    &:extend(.middle-position all);
+    text-align: center;
 
-  &>div{
-    display: inline-block;
+    background-image: url('./tilebg.png');
+
+    & > div {
+      display: inline-block;
+    }
   }
 }

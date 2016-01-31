@@ -9,6 +9,6 @@ class SplashView extends Marionette.ItemView {
 }
 
 SplashView.prototype.template = template;
-SplashView.prototype.className = "is-splash";
+SplashView.prototype.className = 'splash-root';
 
 module.exports = SplashView;

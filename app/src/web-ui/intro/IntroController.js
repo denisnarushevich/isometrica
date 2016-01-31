@@ -3,7 +3,12 @@ var Scope = require('src/common/Scope');
 
 class IntroController {
     showSplash() {
-        Scope.inject(this, 'app').render(new SplashView());
+        var app = Scope.inject(this, 'app');
+        app.render(new SplashView());
+        setTimeout(function(){
+            "use strict";
+            app.navigate('/game');
+        }, 2000);
     }
 }
 
