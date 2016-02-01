@@ -7,7 +7,9 @@ class IntroController {
         app.render(new SplashView());
         setTimeout(function(){
             "use strict";
-            app.navigate('/game');
+            app.navigate('/game', {
+                trigger: true
+            });
         }, 2000);
     }
 }

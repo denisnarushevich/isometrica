@@ -27,10 +27,8 @@ class Application extends Marionette.Application {
         Scope.create(this, GameModule);
     }
 
-    navigate(path){
-        this.appRouter.navigate(path, {
-            trigger: true
-        })
+    navigate(path, opts){
+        this.appRouter.navigate(path, opts);
     }
 
     render(view){

@@ -5,7 +5,7 @@ var Client = require('client/main');
 var Core = require('core/main');
 
 class GameController {
-    init() {
+    init(...args) {
         var layout = new LayoutView();
 
         Scope.inject(this, 'app').render(layout);
@@ -34,9 +34,13 @@ class GameController {
         //callback(client);
         client.startServices();
 
-        layout.bodyRegion.show(Scope.create(this, ViewportView, {
+        layout.body.show(Scope.create(this, ViewportView, {
             camera: client.camera
         }));
+
+        layout.addButton('briefcase');
+        layout.addButton('euro');
+        layout.addButton('star');
     }
 }
 
