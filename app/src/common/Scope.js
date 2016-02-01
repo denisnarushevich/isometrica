@@ -14,7 +14,7 @@ class Scope {
         if(host[scopeKey] === undefined){
             host[scopeKey] = Object.create(null);
         }
-        host[scopeKey][key] = value;
+        return host[scopeKey][key] = value;
     }
 
     static inject(host, key){
