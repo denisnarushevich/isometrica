@@ -19,8 +19,11 @@ define(function (require) {
     var CameraControl = require("./cameracontrol");
     var Player = require("./player");
     var CameraMan = require("./cameraman");
+    var Scope = require('src/common/Scope');
 
     function Vkaria(core, ui, callback) {
+        this.logger = Scope.inject(this, 'logger');
+
         // Vkaria is not trully isometric, it's dimetric with 2:1 ratio (Transport Tycoon used this).
         // It means, that when point goes about 1px by X, it moves 1/2 pixel by Y.
         // We can calculate camera angle around X axis like this: Math.asin(1/2)*180/Math.PI = 30deg, where 1/2 is our
@@ -71,6 +74,12 @@ define(function (require) {
         this.game.scene.addGameObject(this.camera);
 
         this.game.run();
+        this.logger.log('Vkaria started', this);
+    };
+
+    Vkaria.prototype.stop = function(){
+        this.logger.log('Vkaria stopped', this);
+      //this.game.stop()
     };
 
     Vkaria.prototype.startServices = function(){

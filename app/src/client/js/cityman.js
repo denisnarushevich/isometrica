@@ -83,7 +83,7 @@ define(function (require) {
         var root = this.root;
 
         //render hint
-        root.ui.showHint("Pick a tile where you want your city to be located!");
+        //root.ui.showHint("Pick a tile where you want your city to be located!");
 
         //enable selector
         var selector = new TileSelector(root);
@@ -98,6 +98,7 @@ define(function (require) {
         });
 
         //bind ui
+        /*
         var controls = root.ui.showButtons("action");
         controls.onSubmit = function () {
             var tile = selector.selectedTile();
@@ -116,6 +117,7 @@ define(function (require) {
             Events.off(selector, TileSelector.events.change, s);
         };
         controls.canDiscard(false);
+        */
     };
 
     Cityman.prototype.getCityGameObject = function(cityId){

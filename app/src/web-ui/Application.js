@@ -14,14 +14,14 @@ class Application extends Marionette.Application {
 
         Scope.register(this, 'app', this);
 
-        this.appView = new Marionette.LayoutView({
+        this.appView = Scope.create(this, Marionette.LayoutView, {
             el: 'body',
             regions: {
                 'uiRegion': '.game-ui'
             }
         });
 
-        this.appRouter = new Marionette.AppRouter();
+        this.appRouter = Scope.create(this, Marionette.AppRouter);
 
         Scope.create(this, Intro);
         Scope.create(this, GameModule);
