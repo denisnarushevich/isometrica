@@ -9,19 +9,7 @@ class GameController {
     init(...args) {
         var layout = Scope.create(this, LayoutView);
 
-        layout.addButton('briefcase', ()=>{
-            console.log('chemodan');
-        });
 
-        layout.addButton('euro', ()=>{
-
-        });
-
-        layout.addButton('star', ()=>{
-            this.app.navigate('intro', {
-                trigger: true
-            })
-        });
 
         this.app.render(layout);
     }

@@ -12,6 +12,9 @@ define(function (require) {
         Config = require("./config"),
         BuildingState = require("core/buildingstate"),
         Core = require("core/main");
+    var Resources = require('../assets/Resources.js');
+    var buildings = require('../assets/images/buildings/buildings');
+    var misc = require('../assets/images/misc/misc');
 
     var Terrain = Core.Terrain;
 
@@ -60,7 +63,7 @@ define(function (require) {
                             sprite = new engine.SpriteRenderer();
 
                         sprite.layer = RenderLayer.buildingsLayer;
-                        sprite.setSprite(vkaria.sprites.getSprite("site.png")).setPivot(32, 24);
+                        sprite.setSprite(Resources.getSprite(misc['site.png'])).setPivot(32, 24);
 
                         part.addComponent(sprite);
                         this.gameObject.transform.addChild(part.transform);
@@ -82,7 +85,7 @@ define(function (require) {
 
                     var spriteRenderer = new engine.SpriteRenderer();
                     spriteRenderer.layer = spriteData.layer;
-                    spriteRenderer.setSprite(vkaria.sprites.getSprite(spriteData.path));
+                    spriteRenderer.setSprite(Resources.getSprite(buildings[spriteData.path]));
                     spriteRenderer.pivotX = spriteData.pivotX;
                     spriteRenderer.pivotY = spriteData.pivotY;
 

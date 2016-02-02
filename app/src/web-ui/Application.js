@@ -31,6 +31,10 @@ class Application extends Marionette.Application {
         this.appRouter.navigate(path, opts);
     }
 
+    back(){
+        history.back();
+    }
+
     render(view){
         this.appView.uiRegion.show(view);
     }
