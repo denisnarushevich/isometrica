@@ -13,6 +13,7 @@ var ModalView = require('src/web-ui/common/modal/ModalView');
 var TileSelector = require('client/tileselector');
 var Events = require('events');
 
+//TODO: all bussines logic should move to gameController/initController
 class LayoutView extends Marionette.LayoutView {
     constructor(opts) {
         super(opts);
