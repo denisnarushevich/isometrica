@@ -7,7 +7,7 @@ class WorldController {
     constructor() {
         this.client = Scope.inject(this, 'client');
         this.core = Scope.inject(this, 'core');
-        this.game = Scope.inject(this, 'game');
+        this.page = Scope.inject(this, 'page');
         this.app = Scope.inject(this, 'app');
     }
 
@@ -16,7 +16,7 @@ class WorldController {
     }
 
     showEstablishButtons(){
-        this.game.buttons.reset([
+        this.page.buttons.reset([
             new Button({
                 icon: 'map-marker'
             }, {
@@ -39,7 +39,7 @@ class WorldController {
             });
         });
 
-        this.game.showConfirmationButtons().then(()=> {
+        this.page.showConfirmationButtons().then(()=> {
             var tile = selector.selectedTile();
 
             //root.ui.showPrompt("Give city a name!", function (val) {
@@ -58,7 +58,7 @@ class WorldController {
             selector.dispose();
             Events.off(selector, TileSelector.events.change, s);
 
-            this.game.city(Math.round(Math.random()*100));
+            this.page.showCity(Math.round(Math.random()*100));
         },()=>{
             this.showEstablishButtons();
         });

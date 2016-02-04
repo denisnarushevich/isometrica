@@ -22,7 +22,7 @@ define(function (require) {
             graphics = this.graphics;
 
         this.tick = function(){
-            requestAnimFrame(self.tick);
+            this._animationFrame = requestAnimFrame(self.tick);
 
             time.tick();
             scene.tick(time);
@@ -46,6 +46,8 @@ define(function (require) {
      */
     p.graphics = null;
 
+    p._animationFrame = -1;
+
     /**
      * @type {void}
      */
@@ -53,6 +55,10 @@ define(function (require) {
         this.scene.run();
         this.graphics.start();
         this.tick();
+    };
+
+    p.stop = function(){
+        cancelAnimationFrame(this._animationFrame);
     };
 
     return Game;

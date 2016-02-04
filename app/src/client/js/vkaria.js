@@ -79,7 +79,7 @@ define(function (require) {
 
     Vkaria.prototype.stop = function(){
         this.logger.log('Vkaria stopped', this);
-      //this.game.stop()
+        this.game.stop();
     };
 
     Vkaria.prototype.startServices = function(){

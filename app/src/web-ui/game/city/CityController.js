@@ -3,11 +3,11 @@ var Button = require('../layout/button/LayoutButtonModel');
 
 class CityController {
     constructor(){
-        this.game = Scope.inject(this, 'game');
+        this.page = Scope.inject(this, 'page');
         this.logger = Scope.inject(this, 'logger');
     }
     start(){
-        this.game.buttons.reset([
+        this.page.buttons.reset([
             new Button({
                icon: 'briefcase'
             }, {

@@ -1,6 +1,6 @@
 "use strict";
 
-require('./common/less/main.less');
+require('src/web-ui/common/less/main.less');
 
 var Scope = require('src/common/Scope');
 var Intro = require('src/web-ui/intro/IntroModule');
@@ -31,18 +31,29 @@ class Application extends Marionette.Application {
         this.appRouter.navigate(path, opts);
     }
 
-    back(){
-        history.back();
+    replace(path){
+        Backbone.history.navigate(path, {
+            replace: true
+        });
     }
 
-    render(view){
-        this.appView.uiRegion.show(view);
+    back(){
+        history.back();
     }
 
     start(opts){
         super.start(opts);
 
         Backbone.history.start();
+    }
+
+    setPage(Page){
+        if(!(this.currentPage instanceof Page)) {
+            this.currentPage = Scope.create(this, Page);
+            this.currentPage.init();
+            this.appView.uiRegion.show(this.currentPage);
+        }
+        return this.currentPage;
     }
 }
 

@@ -42,9 +42,11 @@ define(function (require) {
     Logic.prototype.terrain = null;
     Logic.prototype.buildings = null;
 
+    Logic.prototype._interval = -1;
+
     Logic.prototype.start = function () {
         var self = this;
-        setInterval(function () {
+        this._interval = setInterval(function () {
             Events.fire(self, events.tick, self, null);
         }, Config.tickDelay);
 
@@ -53,6 +55,10 @@ define(function (require) {
         this.envService.init();
         this.marketService.init();
         this.cities.init();
+    };
+
+    Logic.prototype.stop = function(){
+        clearInterval(this._interval);
     };
 
     return Logic;

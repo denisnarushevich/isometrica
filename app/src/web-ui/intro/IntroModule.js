@@ -1,11 +1,11 @@
 var Scope = require('src/common/Scope');
 var IntroRouter = require('./IntroRouter');
-var IntroController = require('./IntroController');
+var IntroRouterController = require('./IntroRouterController');
 
 class IntroModule {
     constructor(){
         this.router = Scope.create(this, IntroRouter, {
-            controller: Scope.create(this, IntroController)
+            controller: Scope.create(this, IntroRouterController)
         });
     }
 }
