@@ -1,9 +1,12 @@
 var Marionette = require("marionette");
 
-class IntroRouter extends Marionette.AppRouter {}
+class GameRouter extends Marionette.AppRouter {}
 
-IntroRouter.prototype.appRoutes = {
-    'game(/)(:action)': 'init',
+GameRouter.prototype.appRoutes = {
+    'game':'world',
+    'game/world':'world',
+    'game/city/:token':'city',
+    'game/*path':'world'
 };
 
-module.exports = IntroRouter;
+module.exports = GameRouter;
