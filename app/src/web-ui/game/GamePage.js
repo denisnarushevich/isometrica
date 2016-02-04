@@ -7,7 +7,7 @@ var WorldController = require('./world/WorldController');
 var ViewportView = require('./viewport/ViewportView');
 
 class GamePage extends LayoutView {
-    constructor(){
+    constructor() {
         super();
 
         this.app = Scope.inject(this, 'app');
@@ -15,7 +15,7 @@ class GamePage extends LayoutView {
         this.view = new LayoutView();
     }
 
-    init(){
+    init() {
         this.core = Scope.register(this, 'core', Scope.create(this, Core.Logic));
         this.client = Scope.register(this, 'client', Scope.create(this, Client.Vkaria, this.core));
         this.core.start();
@@ -24,28 +24,42 @@ class GamePage extends LayoutView {
         this.client.startServices();
     }
 
-    onShow(){
+    onShow() {
         super.onShow();
         this.body.show(Scope.create(this, ViewportView, {
             camera: this.client.camera
         }));
     }
 
-    onDestroy(){
+    onDestroy() {
         this.core.stop();
         this.client.stop();
     }
 
-    showWorld(){
+    gotoWorld() {
         this.app.navigate('game/world');
+        this.showWorld();
+    }
+
+    gotoCity(id) {
+        this.app.navigate('game/city/' + id);
+        this.showCity(id);
+    }
+
+    showWorld() {
         var worldController = Scope.create(this, WorldController);
+        this.currentController && this.currentController.stop && this.currentController.stop();
+        this.currentController = worldController;
         worldController.start();
     }
 
-    showCity(id){
-        this.app.navigate('game/city/'+id);
+    showCity(id) {
         var cityController = Scope.create(this, CityController);
-        cityController.start();
+        this.currentController && this.currentController.stop && this.currentController.stop();
+        this.currentController = cityController;
+        cityController.start({
+            cityId: id
+        });
     }
 }
 

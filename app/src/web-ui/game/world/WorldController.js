@@ -13,6 +13,9 @@ class WorldController {
 
     start() {
         this.showEstablishButtons();
+        this.onCityClick = this.client.cityman.click((sender, city)=>{
+            this.page.gotoCity(city.id());
+        });
     }
 
     showEstablishButtons(){
@@ -53,15 +56,17 @@ class WorldController {
 
             var city = this.core.cities.establishCity(tile, 'MyCity', this.client.player);
             this.client.player.city(city);
-
-            this.client.hiliteMan.disable(token);
-            selector.dispose();
-            Events.off(selector, TileSelector.events.change, s);
-
-            this.page.showCity(Math.round(Math.random()*100));
+            this.page.gotoCity(city.id());
         },()=>{
             this.showEstablishButtons();
+        }).then(()=>{
+            this.client.hiliteMan.disable(token);
+            Events.off(selector, TileSelector.events.change, s);
+            selector.dispose();
         });
+    }
+    stop(){
+        this.client.cityman.click(this.onCityClick);
     }
 }
 

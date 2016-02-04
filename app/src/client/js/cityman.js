@@ -3,11 +3,9 @@
  */
 define(function (require) {
     var Core = require("core/main");
-    var City = Core.City;
     var Events = require("events");
     var CityLabel = require("./gameObjects/citylabel");
     var Config = require("./config");
-    var TileSelector = require("./tileselector");
     var WorldCamera = require("./components/camerascript");
     var CityComponent = require("./components/city");
 
@@ -51,6 +49,7 @@ define(function (require) {
     function Cityman(root) {
         this.root = root;
         this._cityGOs = {};
+        this.click = Events.event();
     }
 
     Cityman.prototype.init = function () {
@@ -58,66 +57,20 @@ define(function (require) {
         var cam = root.camera.cameraScript;
 
         Events.on(root.core.cities, Core.CityService.events.cityNew, onNewCity, this);
-        Events.on(cam, WorldCamera.events.inputClick, function(sender, e){
+        Events.on(cam, WorldCamera.events.inputClick, function(sender, e, self){
            var gos = cam.pickGameObject(e.gameViewportX, e.gameViewportY);
             for(var i in gos){
                 var item = gos[i];
                 if(item instanceof CityLabel){
                     var cmp = item.getComponent(CityComponent);
-                    var city = cmp.city;
-                    var id = city.id();
-                    console.log("CITY!!!", id);
-                    root.ui.navigate("city/"+id);
+                    self.click(self, cmp.city);
                 }
             }
-        });
-
-        this.establish();
+        }, this);
     };
 
     Cityman.prototype.locate = function (city) {
         this.root.camera.cameraScript.moveTo(this._cityGOs[city.tile()].go.transform);
-    };
-
-    Cityman.prototype.establish = function(){
-        var root = this.root;
-
-        //render hint
-        //root.ui.showHint("Pick a tile where you want your city to be located!");
-
-        //enable selector
-        var selector = new TileSelector(root);
-        var token = -1;
-        var s = Events.on(selector, TileSelector.events.change, function(a,b,c){
-            root.hiliteMan.disable(token);
-            token = root.hiliteMan.hilite({
-                tile: a.selectedTile(),
-                borderColor: "rgba(255,255,255,1)",
-                borderWidth: 2
-            });
-        });
-
-        //bind ui
-        /*
-        var controls = root.ui.showButtons("action");
-        controls.onSubmit = function () {
-            var tile = selector.selectedTile();
-
-            root.ui.showPrompt("Give city a name!", function (val) {
-                var mayor = root.player;
-                var city = root.core.cities.establishCity(tile, val, mayor);
-                mayor.city(city);
-                root.ui.show("viewport");
-                root.ui.hideHint();
-            }, "My City");
-
-            //disable hiliters & selector
-            root.hiliteMan.disable(token);
-            selector.dispose();
-            Events.off(selector, TileSelector.events.change, s);
-        };
-        controls.canDiscard(false);
-        */
     };
 
     Cityman.prototype.getCityGameObject = function(cityId){
