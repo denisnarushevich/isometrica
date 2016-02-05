@@ -23,4 +23,6 @@ class Scope {
     }
 }
 
+Scope.propertyName = scopeKey;
+
 module.exports = Scope;
