@@ -3,7 +3,7 @@
  */
 define(function (require) {
     var Terrain = require("./terrain");
-    var Events = require("events");
+    var Events = require("legacy-events");
     var BuildingData = require("data/buildings");
     var TileRadialIterator = require("./tileiteratorradial");
     var CityService = require("./citysrv");

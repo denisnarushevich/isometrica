@@ -9,7 +9,7 @@ define(function (require) {
     var Config = require("../config");
     var Terrain = Core.Terrain;
     var RenderLayer = require("../renderlayer");
-    var Events = require("events");
+    var Events = require("legacy-events");
 
     var float32Buffer = new Float32Array(3);
     var dash = [4];

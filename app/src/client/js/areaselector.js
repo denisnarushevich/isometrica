@@ -2,7 +2,7 @@ define(function (require) {
     var engine = require("engine"),
         RenderLayer = require("./renderlayer");
     var WorldCamera = require("./components/camerascript");
-    var Events = require("events");
+    var Events = require("legacy-events");
     var Core = require("core/main");
     var RProp = require("reactive-property");
     var Terrain = Core.Terrain;

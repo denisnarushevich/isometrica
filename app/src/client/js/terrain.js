@@ -7,7 +7,7 @@ define(function (require) {
     var TerrainType = Core.TerrainType;
     var Config = require("./config");
     var TileIterator = Core.TileIterator;
-    var Events = require("events");
+    var Events = require("legacy-events");
     var CoreTerrain = Core.Terrain;
     var grass = require('../assets/images/grass/grass');
     var shore = require('../assets/images/shore/shore');

@@ -59,7 +59,7 @@ module.exports = {
             core: __dirname + '/app/src/core',
             helpers: './vendor/helpers',
             "simplex-noise": __dirname + '/app/vendor/simplex-noise',
-            events: __dirname + '/app/src/common/events-wrapper',
+            "legacy-events": __dirname + '/app/src/common/events-wrapper',
             "object-pool": __dirname + '/app/vendor/object-pool',
             enumeration: __dirname + '/app/vendor/enumeration',
             binaryheap: __dirname + '/app/vendor/binaryheap',

@@ -5,7 +5,7 @@ define(function (require) {
     var ResourceCode = require("core/resourcecode");
     var TerrainType = require('./terraintype');
     var Simplex = require("simplex-noise");
-    var Events = require("events");
+    var Events = require("legacy-events");
     //var TileIterator = require("./tileiterator");
 
     namespace("Isometrica.Core").Terrain = Terrain;

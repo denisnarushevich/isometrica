@@ -1,7 +1,7 @@
 //TODO время изучения и прогресс должны хранится в таком формате, чтобы можно было бзе проблем начать изучать из сэйвгэйма
 
 define(function (require) {
-    var Events = require("events"),
+    var Events = require("legacy-events"),
         ResearchState = require("../researchstate"),
         Direction = require("../researchdirection"),
         BuildingData = require("data/buildings"),

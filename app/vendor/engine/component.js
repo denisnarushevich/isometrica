@@ -1,6 +1,6 @@
 define(function (require) {
     var namespace = require("namespace");
-    var EventManager = require("events");
+    var EventManager = require("legacy-events");
 
     namespace("Isometrica.Engine").Component = Component;
 

@@ -7,7 +7,7 @@ define(function (require) {
     var BuildingCode = require("data/buildingcode");
     var BuildingService = require("./buildings");
     var Terrain = require("./terrain");
-    var Events = require("events");
+    var Events = require("legacy-events");
     var namespace = require("namespace");
 
     var Core = namespace("Isometrica.Core");

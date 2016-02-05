@@ -1,5 +1,5 @@
 define(function (require) {
-    var Events = require("events"),
+    var Events = require("legacy-events"),
         Terrain = require("./terrain"),
         Buildings = require("./buildings"),
         VTime = require("./vtime"),

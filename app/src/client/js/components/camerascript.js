@@ -1,7 +1,7 @@
 define(function (require) {
     var engine = require("engine");
     var glMatrix = require("../vendor/gl-matrix");
-    var Events = require("events");
+    var Events = require("legacy-events");
 
     var events = {
         inputMove: 0,

@@ -5,8 +5,8 @@ define(function (require) {
         BuildingClassCode = require("data/classcode"),
         Building = require("./building"),
         Road = require("./road"),
-        EventManager = require("events"),
-        Events = require("events");
+        EventManager = require("legacy-events"),
+        Events = require("legacy-events");
     var Terrain = Core.Terrain;
     var Chunkman = require("./chunkman");
     var TileIterator = Core.TileIterator;

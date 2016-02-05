@@ -1,5 +1,5 @@
 define(function (require) {
-    var Events = require("events");
+    var Events = require("legacy-events");
     var namespace = require("namespace");
 
     var Core = namespace("Isometrica.Core.Time");

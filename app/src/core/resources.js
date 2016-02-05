@@ -1,7 +1,7 @@
 define(function (require) {
 
     var ResourceCode = require("core/resourcecode");
-    var Events = require("events");
+    var Events = require("legacy-events");
     var namespace = require("namespace");
 
     var Core = namespace("Isometrica.Core");

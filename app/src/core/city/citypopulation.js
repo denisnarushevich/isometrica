@@ -2,7 +2,7 @@
  * Created by User on 21.08.2014.
  */
 define(function(require){
-    var Events = require("events");
+    var Events = require("legacy-events");
     /**
      * @type {TileParam}
      */

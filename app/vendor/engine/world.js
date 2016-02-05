@@ -7,7 +7,7 @@
 
 define(function (require) {
     var Octree = require('./lib/octree'),
-        EventManager = require("events");
+        EventManager = require("legacy-events");
 
     /**
      * @param {Logic} logic

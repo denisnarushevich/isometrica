@@ -8,7 +8,7 @@
 define(function (require) {
     var BuildingState = require("core/buildingstate");
     var Resources = require("core/resources");
-    var Events = require("events");
+    var Events = require("legacy-events");
     /**
      * @type {BuildingClassCode}
      */

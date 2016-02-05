@@ -2,7 +2,7 @@
  * Created by User on 19.08.2014.
  */
 define(function (require) {
-    var Events = require("events");
+    var Events = require("legacy-events");
     var BuildingCode = require("data/buildingcode");
     var BuildingData = require("data/buildings");
     var ErrorCode = require("../errorcode");

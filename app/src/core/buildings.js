@@ -6,7 +6,7 @@
 //Try instancing only one tree and each time, when tile is requested put that instance in tile. Kinda singleton tree))
 
 define(function (require) {
-    var Events = require("events");
+    var Events = require("legacy-events");
     var BuildingData = require("data/buildings"),
         Building = require("./building");
     /**

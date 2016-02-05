@@ -4,7 +4,7 @@
 define(function (require) {
     var Config = require("./config");
     var Engine = require("engine");
-    var Events = require("events");
+    var Events = require("legacy-events");
     var Terrain = require("./terrain");
     var Core = require("core/main");
     var BuildingData = Core.BuildingData;

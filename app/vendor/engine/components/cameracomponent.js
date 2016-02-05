@@ -4,7 +4,7 @@ define(function(require){
     var BoundingBox = require("../lib/boundingbox");
     var AABB = require("../lib/aabb");
     var glMatrix = require("../vendor/gl-matrix");
-    var Events = require("events");
+    var Events = require("legacy-events");
 
     namespace("Isometrica.Engine").CameraComponent = CameraComponent;
 

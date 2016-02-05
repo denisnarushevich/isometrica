@@ -1,6 +1,6 @@
 var TileSelector = require('client/tileselector');
 var Scope = require('src/common/Scope');
-var Events = require('events');
+var Events = require('vendor/events/events');
 var Button = require('../layout/button/LayoutButtonModel');
 
 class WorldController {

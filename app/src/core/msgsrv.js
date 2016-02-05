@@ -2,7 +2,7 @@
  * Created by denis on 8/30/14.
  */
 define(function (require) {
-    var Events = require("events");
+    var Events = require("legacy-events");
     var Namespace = require("namespace");
     var Enumeration = require("enumeration");
     var Terrain = require("./terrain");

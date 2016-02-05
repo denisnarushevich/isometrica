@@ -1,6 +1,6 @@
 define(function (require) {
     var namespace = require("namespace");
-    var Events = require("events");
+    var Events = require("legacy-events");
     var Laboratory = require("./city/laboratory"),
         CityStats = require("./city/citystats"),
         Area = require("./city/area"),

@@ -7,7 +7,7 @@
  */
 define(function (require) {
     var Resources = require("../resources"),
-        Events = require("events"),
+        Events = require("legacy-events"),
         BuildingData = require("data/buildings");
 
     var namespace = require("namespace");

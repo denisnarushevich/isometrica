@@ -1,6 +1,6 @@
 define(function (require) {
     var WorldCamera = require("./components/camerascript");
-    var Events = require("events");
+    var Events = require("legacy-events");
 
     function onDrag(sender, param, me) {
         var dragX = param.dx,

@@ -1,7 +1,7 @@
 define(function (require) {
     var Backbone = require("backbone");
     var ValbarItems = require("ui/modules/valbar/js/collections/items");
-    var Events = require("events");
+    var Events = require("legacy-events");
 
     return Backbone.Model.extend({
         initialize: function(attributes, options) {

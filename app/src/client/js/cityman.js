@@ -3,7 +3,7 @@
  */
 define(function (require) {
     var Core = require("core/main");
-    var Events = require("events");
+    var Events = require("legacy-events");
     var CityLabel = require("./gameObjects/citylabel");
     var Config = require("./config");
     var WorldCamera = require("./components/camerascript");

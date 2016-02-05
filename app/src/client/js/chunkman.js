@@ -7,7 +7,7 @@ define(function (require) {
     var TilesMan = require("./tilesman");
     var Config = require("./config");
     var Terrain = Core.Terrain;
-    var Events = require("events");
+    var Events = require("legacy-events");
 
     var events = {
         chunkLoad: 0,

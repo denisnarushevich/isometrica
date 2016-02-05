@@ -2,7 +2,7 @@
  * Created by denis on 9/18/14.
  */
 define(function (require) {
-    var Events = require("events");
+    var Events = require("legacy-events");
     var Buildman = require("./buildman");
     var Core = require("core/main");
     var BuildingClassCode = Core.BuildingClassCode;
