@@ -3,34 +3,29 @@ const style = require('./PromptView.less');
 const Marionette = require('marionette');
 
 class PromptView extends Marionette.ItemView {
-    constructor(opts) {
-        super(opts);
-        this.label = opts.label || 'Enter value';
-        this.validator = opts.validator || (()=> {
-            return true;
-        });
+    get value() {
+        return this.$el.find('.prompt-input').val();
     }
 
     events() {
         return {
-            'input .prompt-input': ()=> {
-                this.trigger('valid', this.isValid());
-            }
+            'input .prompt-input': 'onInput'
         }
     }
 
-    isValid(){
-        return this.validator(this.getValue());
+    onInput() {
+        this.trigger('valid', this.isValid());
+    }
+
+    isValid() {
+        var validator = this.options.validator;
+        return !validator || validator(this.value);
     }
 
     serializeData() {
         return {
-            label: this.label
+            label: this.options.label
         }
-    }
-
-    getValue() {
-        return this.$el.find('.prompt-input').val();
     }
 }
 

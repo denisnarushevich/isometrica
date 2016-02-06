@@ -1,7 +1,7 @@
 var TileSelector = require('client/tileselector');
 var Scope = require('src/common/Scope');
 var Events = require('vendor/events/events');
-var Button = require('../layout/button/LayoutButtonModel');
+var ButtonModel = require('../../common/buttons/button/ButtonModel');
 var PromptDialogView = require('../../common/prompt/PromptDialogView');
 
 class WorldController {
@@ -26,8 +26,10 @@ class WorldController {
 
     showEstablishButtons() {
         this.page.buttons.reset([
-            new Button({
-                icon: 'map-marker'
+            new ButtonModel({
+                icon: 'map-marker',
+                type: 'primary',
+                text: 'Establish city'
             }, {
                 action: ()=> {
                     this.establish();

@@ -1,18 +1,24 @@
 const Marionette = require('marionette');
 const template = require('./DialogView.hbs');
 const style = require('./DialogView.less');
-const DialogButtonView = require('./button/DialogButtonView');
-const DialogButtonModel = require('./button/DialogButtonModel');
+const ButtonView = require('../buttons/button/ButtonView');
+const ButtonModel = require('../buttons/button/ButtonModel');
 
-class DialogView extends Marionette. LayoutView {
+class DialogView extends Marionette.LayoutView {
     constructor(opts) {
         super(opts);
 
+        this.title = opts.title || 'Dialog';
+
         this.buttons = new Backbone.Collection([], {
-            model: DialogButtonModel
+            model: ButtonModel
         });
 
-        this.title = opts.title || 'Dialog';
+        this.buttonsView = new Marionette.CollectionView({
+            childView: ButtonView,
+            collection: this.buttons,
+            template: false
+        });
     }
 
     regions(){
@@ -23,11 +29,7 @@ class DialogView extends Marionette. LayoutView {
     }
 
     onShow(){
-        this.footerRegion.show(new Marionette.CollectionView({
-            childView: DialogButtonView,
-            collection: this.buttons,
-            template: false
-        }));
+        this.footerRegion.show(this.buttonsView);
     }
 
     serializeData(){

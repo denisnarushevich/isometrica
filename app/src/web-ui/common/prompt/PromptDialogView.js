@@ -2,50 +2,46 @@ const template = require('./PromptView.hbs');
 const style = require('./PromptView.less');
 const Marionette = require('marionette');
 const DialogView = require('../dialog/DialogView');
-const DialogButtonModel = require('../dialog/button/DialogButtonModel');
+const ButtonModel = require('../buttons/button/ButtonModel');
 const PromptView = require('./PromptView');
 
 class PromptDialogView extends DialogView {
     constructor(opts) {
         super(opts);
 
-        this.promptView = new PromptView({
+        this.prompt = new PromptView({
             label: opts.label,
             validator: opts.validator
         });
 
-        var okButton = this.okButton = new DialogButtonModel({
-            icon: 'ok'
+        this.ok = new ButtonModel({
+            icon: 'ok',
+            type: 'success'
         }, {
-            action: ()=>this.ok()
+            action: ()=>this.options.ok(this.prompt.value)
         });
 
-        this.promptView.on('valid', (valid)=>{
-            okButton.disabled = !valid;
-        });
-
-        var cancelButton = new DialogButtonModel({
-            icon: 'remove'
+        this.cancel = new ButtonModel({
+            icon: 'remove',
+            type: 'warning'
         }, {
-            action: ()=>this.cancel()
+            action: ()=>this.options.cancel()
         });
 
-        this.buttons.add(okButton);
-        this.buttons.add(cancelButton);
-    }
+        this.prompt.on('valid', (valid)=> {
+            valid ? this.ok.enable() : this.ok.disable();
+        });
 
-    cancel() {
-        this.options.cancel();
-    }
-
-    ok() {
-        this.options.ok(this.promptView.getValue());
+        this.buttons.add(this.ok);
+        this.buttons.add(this.cancel);
     }
 
     onShow(opts) {
         super.onShow(opts);
-        this.bodyRegion.show(this.promptView);
-        this.okButton.disabled = this.promptView.isValid();
+
+        this.bodyRegion.show(this.prompt);
+
+        this.prompt.isValid() ? this.ok.enable() : this.ok.disable();
     }
 }
 

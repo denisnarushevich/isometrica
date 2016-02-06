@@ -1,8 +1,8 @@
 require('./layout.less');
 var template = require('./layout.hbs');
 var Marionette = require("marionette");
-var LayoutButton = require('./button/Button');
-var LayoutButtonModel = require('./button/LayoutButtonModel');
+var ButtonView = require('../../common/buttons/button/ButtonView');
+var ButtonModel = require('../../common/buttons/button/ButtonModel');
 var Backbone = require('backbone');
 var Scope = require('src/common/Scope');
 
@@ -11,13 +11,13 @@ class LayoutView extends Marionette.LayoutView {
         super(opts);
 
         this.buttons = new Backbone.Collection([], {
-            model: LayoutButtonModel
+            model: ButtonModel
         });
     }
 
     onShow() {
         this.footer.show(new Marionette.CollectionView({
-            childView: LayoutButton,
+            childView: ButtonView,
             collection: this.buttons,
             template: false,
             className: 'layout-buttons'
@@ -26,14 +26,14 @@ class LayoutView extends Marionette.LayoutView {
 
     showDefaultButtons() {
         this.buttons.reset([
-            new LayoutButtonModel({
+            new ButtonModel({
                 icon: 'briefcase'
             }, {
                 action: ()=> {
                     console.log('chemodan');
                 }
             }),
-            new LayoutButtonModel({
+            new ButtonModel({
                 icon: 'arrow-left'
             }, {
                 action: ()=> {
@@ -47,14 +47,18 @@ class LayoutView extends Marionette.LayoutView {
         return new Promise((resolve, reject)=> {
             var buttons = [];
 
-            opts && !opts.ok || buttons.push(new LayoutButtonModel({
-                icon: 'ok'
+            opts && !opts.ok || buttons.push(new ButtonModel({
+                icon: 'ok',
+                text: 'Ok',
+                type: 'success'
             }, {
                 action: resolve
             }));
 
-            opts && !opts.cancel || buttons.push(new LayoutButtonModel({
-                icon: 'remove'
+            opts && !opts.cancel || buttons.push(new ButtonModel({
+                icon: 'remove',
+                text: 'Cancel',
+                type: 'warning'
             }, {
                 action: reject
             }));

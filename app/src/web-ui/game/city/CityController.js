@@ -1,5 +1,5 @@
 var Scope = require('src/common/Scope');
-var Button = require('../layout/button/LayoutButtonModel');
+var ButtonModel = require('../../common/buttons/button/ButtonModel');
 
 class CityController {
     constructor(){
@@ -8,15 +8,19 @@ class CityController {
     }
     start(opts){
         this.page.buttons.reset([
-            new Button({
-               icon: 'briefcase'
+            new ButtonModel({
+               icon: 'briefcase',
+                type: 'primary',
+                text: 'Buy'
             }, {
                 action: ()=>{
                     this.logger.log('City #'+opts.cityId);
                 }
             }),
-            new Button({
-                icon: 'remove'
+            new ButtonModel({
+                icon: 'remove',
+                type: 'warning',
+                text: 'Exit city'
             }, {
                 action: ()=>{
                     this.page.gotoWorld();
