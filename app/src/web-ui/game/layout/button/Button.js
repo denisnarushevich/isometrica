@@ -17,6 +17,6 @@ LayoutButton.prototype.tagName = 'button';
 LayoutButton.prototype.attributes = {
     type: 'button'
 };
-LayoutButton.prototype.className = 'LayoutButton';
+LayoutButton.prototype.className = 'layoutButton btn btn-default btn-lg';
 
 module.exports = LayoutButton;

@@ -19,7 +19,8 @@ class LayoutView extends Marionette.LayoutView {
         this.footer.show(new Marionette.CollectionView({
             childView: LayoutButton,
             collection: this.buttons,
-            template: false
+            template: false,
+            className: 'layout-buttons'
         }));
     }
 

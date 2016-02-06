@@ -2,6 +2,7 @@ var TileSelector = require('client/tileselector');
 var Scope = require('src/common/Scope');
 var Events = require('vendor/events/events');
 var Button = require('../layout/button/LayoutButtonModel');
+var PromptDialogView = require('../../common/prompt/PromptDialogView');
 
 class WorldController {
     constructor() {
@@ -9,16 +10,21 @@ class WorldController {
         this.core = Scope.inject(this, 'core');
         this.page = Scope.inject(this, 'page');
         this.app = Scope.inject(this, 'app');
+        this.modals = Scope.inject(this, 'modals');
+
+        this.modal = this.modals.get();
+
+        this.onCityClick = (sender, city)=> {
+            this.page.gotoCity(city.id());
+        };
     }
 
     start() {
         this.showEstablishButtons();
-        this.onCityClick = this.client.cityman.click((sender, city)=>{
-            this.page.gotoCity(city.id());
-        });
+        this.client.cityman.click.on(this.onCityClick);
     }
 
-    showEstablishButtons(){
+    showEstablishButtons() {
         this.page.buttons.reset([
             new Button({
                 icon: 'map-marker'
@@ -43,30 +49,35 @@ class WorldController {
         });
 
         this.page.showConfirmationButtons().then(()=> {
+            return new Promise((resolve, reject)=>{
+                this.modal.show(new PromptDialogView({
+                    title: 'Enter city name',
+                    label: 'City name',
+                    ok: resolve,
+                    cancel: reject,
+                    validator: (value)=>{
+                        console.log(value);
+                        return value.length > 0;
+                    }
+                }));
+            });
+        }).then((name)=> {
             var tile = selector.selectedTile();
-
-            //root.ui.showPrompt("Give city a name!", function (val) {
-            //    var mayor = root.player;
-            //    var city = root.core.cities.establishCity(tile, val, mayor);
-            //    mayor.city(city);
-            //    root.ui.show("viewport");
-            //    root.ui.hideHint();
-            //}, "My City");
-
-
-            var city = this.core.cities.establishCity(tile, 'MyCity', this.client.player);
+            var city = this.core.cities.establishCity(tile, name, this.client.player);
             this.client.player.city(city);
             this.page.gotoCity(city.id());
-        },()=>{
+        }, ()=> {
             this.showEstablishButtons();
-        }).then(()=>{
+        }).then(()=> {
+            this.modal.close();
             this.client.hiliteMan.disable(token);
             Events.off(selector, TileSelector.events.change, s);
             selector.dispose();
         });
     }
-    stop(){
-        this.client.cityman.click(this.onCityClick);
+
+    stop() {
+        this.client.cityman.click.off(this.onCityClick);
     }
 }
 

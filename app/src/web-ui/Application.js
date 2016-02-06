@@ -5,6 +5,7 @@ require('src/web-ui/common/less/main.less');
 var Scope = require('src/common/Scope');
 var Intro = require('src/web-ui/intro/IntroModule');
 var GameModule = require('src/web-ui/game/gameModule');
+var ModalService = require('./common/modal/ModalService');
 
 var Marionette = require('marionette');
 
@@ -17,11 +18,14 @@ class Application extends Marionette.Application {
         this.appView = Scope.create(this, Marionette.LayoutView, {
             el: 'body',
             regions: {
-                'uiRegion': '.game-ui'
+                'uiRegion': '.game-ui',
+                'overlayRegion': '.overlay'
             }
         });
 
         this.appRouter = Scope.create(this, Marionette.AppRouter);
+
+        Scope.register(this, 'modals', Scope.create(this, ModalService));
 
         Scope.create(this, Intro);
         Scope.create(this, GameModule);
