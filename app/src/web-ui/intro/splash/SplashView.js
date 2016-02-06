@@ -7,6 +7,6 @@ require('./splash.less');
 class SplashView extends Marionette.ItemView {}
 
 SplashView.prototype.template = template;
-SplashView.prototype.className = 'splash-root';
+SplashView.prototype.className = 'splash';
 
 module.exports = SplashView;

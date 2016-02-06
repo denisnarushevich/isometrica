@@ -2,16 +2,22 @@
 @import '../../common/less/mixins.less';
 
 .splash {
-  &-root {
-    height: 100%;
-    width: 100%;
-    &:extend(.middle-position all);
-    text-align: center;
+  color: #fff;
+  font-family: "8bit";
+  font-size: 1em;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
 
-    background-image: url('./tilebg.png');
+  line-height: 1.5;
 
-    & > div {
-      display: inline-block;
-    }
+
+  height: 100%;
+  width: 100%;
+  &:extend(.middle-position all);
+  text-align: center;
+
+  background-image: url('./tilebg.png');
+
+  & > div {
+    display: inline-block;
   }
 }
