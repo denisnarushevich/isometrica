@@ -21,7 +21,6 @@ define(function (require) {
     require("./gatherreq");
     require("./influencemap");
     require("./logic");
-    require("./msgsrv");
     require("./researchdirection");
     require("./researchstate");
     require("./resourcecode");

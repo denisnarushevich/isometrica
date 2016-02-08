@@ -1,65 +1,73 @@
-/**
- * Created by denis on 9/17/14.
- */
-define(function (require) {
-    var City = require("./city");
-    var namespace = require("namespace");
+const Scope = require('src/common/Scope');
 
-    var Core = namespace("Isometrica.Core");
-    Core.CityService = CityService;
+var City = require("./city");
+var namespace = require("namespace");
 
-    var events = {
-        cityNew: 0,
-        cityRemove: 1
-    };
+var Terrain = require("./terrain");
 
-    function addCity(self, city){
-        if(self._citiesById[city.id()] === undefined){
-            self._cities.push(city);
-            self._citiesByName[city.name()] = city;
-            self._citiesByTile[city.tile()] = city;
-            self._citiesById[city.id()] = city;
-        }else
-            throw "City with id: "+city.id()+" already exists";
-    }
+var Core = namespace("Isometrica.Core");
+Core.CityService = CityService;
 
-    function removeCity(self, city){
-        var index = this._cities.indexOf(city);
-        if(index !== -1)
-            this._cities.splice(index, 1);
-        delete this._citiesByName[city.name()];
-        delete this._citiesById[city.id()];
-        delete this._citiesByTile[city.tile()];
-    }
+var events = {
+    cityNew: 0,
+    cityRemove: 1
+};
 
-    function CityService(root) {
-        this.root = root;
-        this._cities = [];
-        this._citiesByName = {};
-        this._citiesByTile = {};
-        this._citiesById = {};
+function addCity(self, city) {
+    if (self._citiesById[city.id()] === undefined) {
+        self._cities.push(city);
+        self._citiesByName[city.name()] = city;
+        self._citiesByTile[city.tile()] = city;
+        self._citiesById[city.id()] = city;
+    } else
+        throw "City with id: " + city.id() + " already exists";
+}
 
-        this.onNewCity = Events.event(events.cityNew);
-    }
+function removeCity(self, city) {
+    var index = this._cities.indexOf(city);
+    if (index !== -1)
+        this._cities.splice(index, 1);
+    delete this._citiesByName[city.name()];
+    delete this._citiesById[city.id()];
+    delete this._citiesByTile[city.tile()];
+}
 
-    CityService.events = events;
+function CityService(root) {
+    this.root = root;
+    this._cities = [];
+    this._citiesByName = {};
+    this._citiesByTile = {};
+    this._citiesById = {};
 
-    CityService.prototype.init = function(){};
+    this.onNewCity = Events.event(events.cityNew);
+}
 
-    CityService.prototype.establishCity = function(tile, name, mayor){
-        var city = City.establish(this.root, tile, name, mayor.name());
-        if (city === null)
-            return false;
-        addCity(this, city);
-        Events.fire(this, events.cityNew, city);
-        city.init();
+CityService.events = events;
 
-        return city;
-    };
+CityService.prototype.init = function () {
+};
 
-    CityService.prototype.getCity = function (id) {
-        return this._citiesById[id];
-    };
+CityService.prototype.establishCity = function (tile, name, mayor) {
+    if (!CityService.canEstablish(this.root, tile))
+        return null;
 
-    return CityService;
-});
+    var city = Scope.create(this, City, this.root, tile);
+    city.name(name);
+    city.mayor(mayor.name());
+
+    addCity(this, city);
+    Events.fire(this, events.cityNew, city);
+    city.init();
+
+    return city;
+};
+
+CityService.prototype.getCity = function (id) {
+    return this._citiesById[id];
+};
+
+CityService.canEstablish = function (world, tile) {
+    return !Terrain.isSlope(world.terrain.tileSlope(tile));
+};
+
+module.exports = CityService;

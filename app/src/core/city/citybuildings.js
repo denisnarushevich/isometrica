@@ -10,6 +10,7 @@ define(function (require) {
     var Terrain = require("../terrain");
     var TileIterator = require("../tileiterator");
     var Resources = require("../resources");
+    var TileMessageType = require('../tiles/TileMessageType');
 
     var namespace = require("namespace");
     var CityService = namespace("Isometrica.Core.CityService");
@@ -71,7 +72,8 @@ define(function (require) {
             Events.fire(this, events.new, building);
             this.changed(this, this);
         } else {
-            root.messagingService.sendTileMessage(tile, Isometrica.Core.MessageType.tileError, errorCode);
+            tile.message(TileMessageType.ERROR, errorCode);
+
         }
     };
 
@@ -85,10 +87,8 @@ define(function (require) {
             var tile = TileIterator.next(iter);
             var errorCode = buildTest(this, code, tile);
 
-
-
             if(errorCode !== ErrorCode.NONE){
-                root.messagingService.sendTileMessage(tile, Isometrica.Core.MessageType.tileError, errorCode);
+                tile.message(TileMessageType.ERROR, errorCode);
                 continue;
             }
 

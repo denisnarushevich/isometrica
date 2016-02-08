@@ -2,6 +2,7 @@ var Scope = require('src/common/Scope');
 var LayoutView = require('./layout/LayoutView');
 var Client = require('client/main');
 var Core = require('core/main');
+var Logic = require('core/logic');
 var CityController = require('./city/CityController');
 var WorldController = require('./world/WorldController');
 var ViewportView = require('./viewport/ViewportView');
@@ -16,7 +17,7 @@ class GamePage extends LayoutView {
     }
 
     init() {
-        this.core = Scope.register(this, 'core', Scope.create(this, Core.Logic));
+        this.core = Scope.register(this, 'core', Scope.create(this, Logic));
         this.client = Scope.register(this, 'client', Scope.create(this, Client.Vkaria, this.core));
         this.core.start();
 
