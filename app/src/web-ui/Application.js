@@ -25,7 +25,7 @@ class Application extends Marionette.Application {
 
         this.appRouter = Scope.create(this, Marionette.AppRouter);
 
-        Scope.register(this, 'modals', Scope.create(this, ModalService));
+        Scope.register(this, ModalService.TOKEN, Scope.create(this, ModalService));
 
         Scope.create(this, Intro);
         Scope.create(this, GameModule);

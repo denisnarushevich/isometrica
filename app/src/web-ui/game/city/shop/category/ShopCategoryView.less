@@ -1,0 +1,27 @@
+@import "~src/web-ui/common/less/main";
+
+.shopCategoryView {
+  width: 152px;
+  height: 192px;
+  padding: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &-image {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    image-rendering: optimize-contrast;
+    image-rendering: pixelated;
+    width: 120px;
+    height: 120px;
+  }
+
+  &-name {
+    line-height: 40px;
+    text-align: center;
+  }
+}

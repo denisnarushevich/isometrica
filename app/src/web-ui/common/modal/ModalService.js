@@ -25,4 +25,6 @@ class ModalService {
     }
 }
 
+ModalService.TOKEN = 'modals';
+
 module.exports = ModalService;
