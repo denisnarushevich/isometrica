@@ -1,6 +1,9 @@
+# The project is broken and dead. Sorry.
+To run it do npm install, cd to root, run webpack, then host /app dir and open index.html in browser;
+
 # Free to play city building game
 
-![Isometrica](https://bytebucket.org/narushevich/isometrica/raw/3535026b32776c0c03e34cfc7b45bac6057af04b/misc/Isometrica.png?token=9b2997aa55a4fdf051fdf8087f176057fb890e46)
+![Isometrica](misc/Isometrica.png)
 
 ### About
 This is a JavaScript based city building game with retro graphics. 
@@ -35,12 +38,10 @@ Below are listed development milestones/guidelines, that may vary by time.
 * Code minification, resources optimization - done
 * build task
 
-### Useful
-* [mindmap](http://www.text2mindmap.com/WLGHmJ)
-* [Desing document (russian)](https://docs.google.com/document/d/1gwC2RWAbepw1x5oCpR83NVXAHLEUXlBzl2u1vu4LaE4/edit?usp=sharing).
 
 ### Dependencies
-* [My own very fancy game engine](https://bitbucket.org/narushevich/scalia)
+* homegrow 2.5D engine
 * jquery, for UI
 * backbone & underscore
+* backbone-marionette
 * require js with text plugin
