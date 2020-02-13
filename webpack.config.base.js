@@ -1,4 +1,17 @@
+var webpack = require('webpack');
+
 module.exports = {
+    plugins: [
+        new webpack.ProvidePlugin({
+            _: 'underscore'
+        })
+    ],
+    resolve: {
+        modules: [__dirname + '/node_modules', __dirname + '/app']
+    },
+    resolveLoader: {
+        modules: [__dirname + '/node_modules']
+    },
     module: {
         loaders: [
             {test: /\.css$/, loader: 'style!css'},
