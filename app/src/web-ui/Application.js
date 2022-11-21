@@ -5,7 +5,7 @@ require('src/web-ui/common/less/main.less');
 var Scope = require('src/common/Scope');
 var Intro = require('src/web-ui/intro/IntroModule');
 var GameModule = require('src/web-ui/game/gameModule');
-var ModalService = require('./common/modal/ModalService');
+var ModalService = require('src/web-ui/common/modal/ModalService');
 
 var Marionette = require('marionette');
 
